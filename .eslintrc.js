@@ -1,5 +1,5 @@
-/* eslint-disable linebreak-style */
-export default {
+// eslint-disable-next-line no-undef
+module.exports = {
 	'env': {
 		'browser': true,
 		'es2021': true
@@ -23,11 +23,7 @@ export default {
 	'rules': {
 		'indent': [
 			'error',
-			'spaces'
-		],
-		'linebreak-style': [
-			'error',
-			'windows'
+			'tab'
 		],
 		'quotes': [
 			'error',
