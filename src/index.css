@@ -5,9 +5,12 @@
   margin: 0;
   box-sizing: border-box;
   font-family: 'Fira Code', sans-serif;
+  text-align: start;
   color: #FFF;
 }
 
 body {
-  background-color: #130221;
+  background-color: #0F1120;
+  margin: 0 16vw;
+  heigth: 100%;
 }
