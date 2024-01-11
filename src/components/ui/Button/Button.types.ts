@@ -1,5 +1,8 @@
+export type ButtonVariants = 'primary' | 'secondary' | 'text' | 'hiperlink' | 'submit';
+
 export type ButtonProps = {
-  type?: 'primary' | 'secondary' | 'text',
+  type?: ButtonVariants,
   label: string | React.JSX.Element,
-  onClick: () => void,
+  disabled?: boolean,
+  onClick?: () => void,
 };

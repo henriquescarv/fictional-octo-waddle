@@ -1,9 +1,8 @@
-import { ButtonProps } from '../Button/Button.types';
+import { ReactNode } from 'react';
 
 export type CardProps = {
   title?: string,
-  imageUrl?: string,
-  description: string,
-  button: ButtonProps,
-  secondButton?: ButtonProps,
+  variant?: 'primary' | 'secondary',
+  titlePosition?: 'start' | 'end',
+  children: ReactNode,
 };

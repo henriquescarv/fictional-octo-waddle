@@ -1,29 +1,26 @@
 import React from 'react';
 import { CardProps } from './Card.types';
 import * as Styles from './Card.styles';
-import Button from '../Button/Button';
 
 const Card = ({
 	title,
-	imageUrl,
-	description,
-	button,
-	secondButton
+	variant = 'primary',
+	titlePosition = 'start',
+	children,
 }: CardProps) => {
 	return (
 		<Styles.Wrapper>
-			<Styles.Title>{title}</Styles.Title>
+			{variant === 'primary' && (
+				<Styles.Title textAlign={titlePosition}>{title}</Styles.Title>
+			)}
 			<Styles.Card>
-				<Styles.CardImage src={imageUrl} />
-				<Styles.CardInfoWrapper>
-					{description}
-					<Styles.ButtonsContainer>
-						<Button {...button} />
-						{secondButton && (
-							<Button {...secondButton} />
-						)}
-					</Styles.ButtonsContainer>
-				</Styles.CardInfoWrapper>
+				{variant === 'secondary' && (
+					<>
+						<Styles.Title variant={variant} textAlign={titlePosition}>{title}</Styles.Title>
+						<Styles.LineBreak />
+					</>
+				)}
+				{children}
 			</Styles.Card>
 		</Styles.Wrapper>
 	);

@@ -51,8 +51,10 @@ export const Text = styled.p`
   }
 `;
 
-export const Bar = styled.p`
-  color: ${defaultTheme.colors.secondary}; 
+export const Bar = styled.span`
+  color: ${defaultTheme.colors.secondary};
+  user-select: none;
+  -webkit-user-drag: none;
 `;
 
 export const FloatMenuContainer = styled.div`

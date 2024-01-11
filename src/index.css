@@ -7,10 +7,21 @@
   font-family: 'Fira Code', sans-serif;
   text-align: start;
   color: #FFF;
+  scroll-behavior: smooth;
 }
 
 body {
   background-color: #0F1120;
-  margin: 0 16vw;
   heigth: 100%;
+}
+
+::-webkit-scrollbar {
+  width: 16px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-clip: content-box;
+  background-color: #41E482;
+  border-radius: 8px;
+  border: 4px solid transparent;
 }

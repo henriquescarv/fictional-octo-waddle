@@ -1,10 +1,13 @@
-import styled, { css } from 'styled-components';
-import defaultTheme from '../../assets/styles/deafultTheme';
+import styled from 'styled-components';
+import defaultTheme from '../../../../../assets/styles/deafultTheme';
 
 export const Wrapper = styled.div``;
 
-export const HomeSectionWrapper = styled(Wrapper)`
-  margin: 80px 0;
+export const HomeSection = styled.section`
+  margin: 80px 0 160px 0;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1140px;
 `;
 
 export const FlexWrapper = styled(Wrapper)`
@@ -19,17 +22,18 @@ export const SectionHead = styled.div`
   margin-bottom: 92px;
 `;
 
-interface SectionTitleProps {
-  bar?: boolean,
-}
+export const SectionTitleBar = styled.span`
+  color: ${defaultTheme.colors.primary};
+  font-size: 32px;
+  font-weight: 500;
+  user-select: none;
+`;
 
-export const SectionTitle = styled.h2`
-  ${({bar}: SectionTitleProps) => css`
-    color: ${bar ? defaultTheme.colors.primary : defaultTheme.colors.white};
-    font-size: 32px;
-    font-weight: 500;
-    user-select: none;
-  `};
+export const SectionTitle = styled.h3`
+  color: ${defaultTheme.colors.white};
+  font-size: 32px;
+  font-weight: 500;
+  user-select: none;
 `;
 
 export const SectionTitleLine = styled.div`

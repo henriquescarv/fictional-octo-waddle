@@ -16,10 +16,14 @@ export const NavbarWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   padding-top: 32px;
-  margin: 0 16vw;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1140px;
 `;
 
-export const LogoContainer = styled.div`
+export const LogoButton = styled.button`
+  background: none;
+  border: none;
   &:hover {
     cursor: pointer;
   }

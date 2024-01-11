@@ -1,14 +1,14 @@
 import React from 'react';
 import { HomeSectionProps } from './HomeSection.types';
 import * as Styles from './HomeSection.styles';
-import Button from '../ui/Button/Button';
+import Button from '../../../../../components/ui/Button/Button';
 
 const HomeSection = ({ title, content, rightButton }: HomeSectionProps) => {
 	return (
-		<Styles.HomeSectionWrapper>
+		<Styles.HomeSection>
 			<Styles.SectionHead>
 				<Styles.FlexWrapper>
-					<Styles.SectionTitle bar>/</Styles.SectionTitle>
+					<Styles.SectionTitleBar>/</Styles.SectionTitleBar>
 					<Styles.SectionTitle>
 						{title}
 					</Styles.SectionTitle>
@@ -27,7 +27,7 @@ const HomeSection = ({ title, content, rightButton }: HomeSectionProps) => {
 			<Styles.ContentWrapper>
 				{content}
 			</Styles.ContentWrapper>
-		</Styles.HomeSectionWrapper>
+		</Styles.HomeSection>
 	);
 };
 

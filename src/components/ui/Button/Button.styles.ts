@@ -1,16 +1,23 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import defaultTheme from '../../../assets/styles/deafultTheme';
 
+interface DefaultButtonProps {
+  disabled?: boolean,
+}
+
 const SharedButtonStyles = styled.button`
-  all: unset;
-  align-items: center;
-  border-radius: 8px;
-  cursor: pointer;
-  display: flex;
-  gap: 8px;
-  padding: 8px 16px;
-  transition: .2s;
-  user-select: none;
+  ${({disabled=false}: DefaultButtonProps) => css`
+    all: unset;
+    align-items: center;
+    border-radius: 8px;
+    cursor: ${!disabled && 'pointer'};
+    display: flex;
+    gap: 8px;
+    font-size: 20px;
+    padding: 8px 16px;
+    transition: .2s;
+    user-select: none;
+  `};
 `;
 
 export const PrimaryButton = styled(SharedButtonStyles)`
@@ -41,6 +48,25 @@ export const TextButton = styled(SharedButtonStyles)`
 
     svg {
       fill: ${defaultTheme.colors.primary};
+    }
+  }
+`;
+
+export const HiperlinkButton = styled(SharedButtonStyles)`
+  padding: 0;
+  color: ${defaultTheme.colors.primary};
+  text-decoration: underline;
+
+  svg {
+    transition: .2s;
+    fill: ${defaultTheme.colors.primary};
+  }
+
+  &:hover {
+    color: ${defaultTheme.colors.primaryLight};
+
+    svg {
+      fill: ${defaultTheme.colors.primaryLight};
     }
   }
 `;

@@ -4,6 +4,7 @@ const defaultTheme = {
 		white: '#FFF',
 		gray: '#607B96',
 		primary: '#41E482',
+		primaryLight: '#B9FFC4',
 		secondary: '#DA44CB',
 
 		buttonPrimary: '#C778DD33',

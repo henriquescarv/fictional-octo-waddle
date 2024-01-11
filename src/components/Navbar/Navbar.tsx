@@ -21,12 +21,16 @@ const Navbar = () => {
 		}
 	];
 
+	const handleSwipeUp = () => {
+		window.scrollTo(0, 0);
+	};
+
 	return (
 		<Styles.Header>
 			<Styles.NavbarWrapper>
-				<Styles.LogoContainer>
+				<Styles.LogoButton onClick={handleSwipeUp}>
 					<Logo />
-				</Styles.LogoContainer>
+				</Styles.LogoButton>
 				<Styles.ButtonsContainer>
 					<NavbarButton text={Locales.navbar.homeButton} />
 					<NavbarButton text={Locales.navbar.projectsButton} />

@@ -1,4 +1,4 @@
-import { ButtonProps } from '../ui/Button/Button.types';
+import { ButtonProps } from '../../../../../components/ui/Button/Button.types';
 
 export type HomeSectionProps = {
   title: string,
