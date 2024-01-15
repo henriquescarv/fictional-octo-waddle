@@ -7,7 +7,11 @@ export const HomeSection = styled.section`
   margin: 80px 0 160px 0;
   margin-left: auto;
   margin-right: auto;
-  max-width: 1140px;
+  max-width: ${defaultTheme.devicesScreen.default};
+
+  @media (max-width: ${defaultTheme.devicesScreen.default}) {
+    padding: 0 16px;
+  }
 `;
 
 export const FlexWrapper = styled(Wrapper)`

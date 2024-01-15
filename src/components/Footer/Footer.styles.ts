@@ -13,7 +13,11 @@ export const Footer = styled.footer`
   padding: 48px 0;
   margin-left: auto;
   margin-right: auto;
-  max-width: 1140px;
+  max-width: ${defaultTheme.devicesScreen.default};
+
+  @media (max-width: ${defaultTheme.devicesScreen.default}) {
+    padding: 0 16px;
+  }
 `;
 
 export const TopContainer = styled.div`

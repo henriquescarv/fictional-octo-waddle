@@ -18,7 +18,11 @@ export const NavbarWrapper = styled.div`
   padding-top: 32px;
   margin-left: auto;
   margin-right: auto;
-  max-width: 1140px;
+  max-width: ${defaultTheme.devicesScreen.default};
+
+  @media (max-width: ${defaultTheme.devicesScreen.default}) {
+    padding: 32px 16px 0;
+  }
 `;
 
 export const LogoButton = styled.button`
@@ -30,6 +34,7 @@ export const LogoButton = styled.button`
 `;
 
 export const ButtonsContainer = styled.div`
+  align-items: center;  
   display: flex;
   gap: 32px;
 

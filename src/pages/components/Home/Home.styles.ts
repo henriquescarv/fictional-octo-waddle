@@ -4,15 +4,40 @@ import defaultTheme from '../../../assets/styles/deafultTheme';
 export const Wrapper = styled.div``;
 
 export const BasicInfosSection = styled.section`
+  align-items: center;
   display: flex;
   height: 100vh;
-  justify-content: space-between;
-  // gap: 20px;
   margin-top: 32px;
   margin-left: auto;
   margin-right: auto;
-  padding: 128px 0 ;
-  max-width: 1140px;
+  padding: 128px 0;
+  max-width: ${defaultTheme.devicesScreen.default};
+
+  @media (max-width: ${defaultTheme.devicesScreen.default}) {
+    padding: 128px 16px;
+  }
+
+  @media (max-width: ${defaultTheme.devicesScreen.tablet}) {
+    margin-top: 0;
+    gap: 36px;
+  }
+`;
+
+export const BasicInfosWrapper = styled.div`
+  display: flex;
+  height: 100%;
+  max-height: 620px;
+  justify-content: space-between;
+  width: 100%;
+
+  @media (max-width: ${defaultTheme.devicesScreen.tablet}) {
+    flex-direction: column;
+  }
+
+  @media (max-width: ${defaultTheme.devicesScreen.mobile}) {
+    gap: 90px;
+    height: auto;
+  }
 `;
 
 interface ScrollUpContainerProps {
@@ -40,7 +65,9 @@ export const Container = styled.div`
 `;
 
 export const LeftContainer = styled(Container)`
-  margin-top: 64px
+  @media (min-width: ${defaultTheme.devicesScreen.tablet}) {
+    margin-top: 64px
+  }
 `;
 
 export const RightContainer = styled(Container)`
@@ -48,10 +75,16 @@ export const RightContainer = styled(Container)`
 `;
 
 export const DotsContainer = styled.div`
-  margin-right: 64px;
+  margin-right: 32px;
 
   svg {
     transform: rotate(45deg);
+  }
+
+  @media (max-width: ${defaultTheme.devicesScreen.tablet}) {
+    svg {
+      height: 72px;
+    }
   }
 `;
 
@@ -63,6 +96,10 @@ export const TitleWrapper = styled(Wrapper)`
 export const SubTitle = styled.h2`
   font-size: 24px;
   font-weight: 300;
+
+  @media (max-width: ${defaultTheme.devicesScreen.tablet}) {
+    font-size: 16px;
+  }
 `;
 
 export const TitleBox = styled.div`
@@ -75,6 +112,10 @@ export const AngleBracket = styled.span`
   font-size: 72px;
   font-weight: 600;
   user-select: none;
+
+  @media (max-width: ${defaultTheme.devicesScreen.mobile}) {
+    font-size: 36px;
+  }
 `;
 
 export const Title = styled.h1`
@@ -82,16 +123,28 @@ export const Title = styled.h1`
   font-size: 72px;
   font-weight: 600;
   max-width: 600px;
+
+  @media (max-width: ${defaultTheme.devicesScreen.mobile}) {
+    font-size: 36px;
+  }
 `;
 
 export const Text = styled.p`
   color: ${defaultTheme.colors.gray};
   font-size: 24px;
+
+  @media (max-width: ${defaultTheme.devicesScreen.mobile}) {
+    font-size: 16px;
+  }
 `;
 
 export const ButtonsContainer = styled.div`
   display: flex;
   gap: 16px;
+
+  @media (max-width: ${defaultTheme.devicesScreen.mobile}) {
+    margin-top: 32px;
+  }
 `;
 
 export const Circle = styled.div`
@@ -109,6 +162,10 @@ export const PresentationContainer = styled.div`
   padding: 8px;
   margin-top: 32px;
   max-width: 400px;
+
+  @media (max-width: ${defaultTheme.devicesScreen.tablet}) {
+    max-width: 80%;
+  }
 `;
 
 export const DefaultText = styled.div`

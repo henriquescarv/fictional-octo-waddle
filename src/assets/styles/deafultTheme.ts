@@ -11,8 +11,9 @@ const defaultTheme = {
 		buttonPrimaryHover: '#C778DD64'
 	},
 	devicesScreen: {
-		mobile: '480px',
-		tablet: '1080px',
+		mobile: '640px',
+		tablet: '960px',
+		default: '1140px',
 		desktop: '1600px',
 		widescreen: '2048px',
 	}

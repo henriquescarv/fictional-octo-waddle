@@ -12,10 +12,10 @@ import projects from '../../../data/projetcs';
 import ProjectsCard from './components/ProjectsCard/ProjectsCard';
 import Card from '../../../components/ui/Card/Card';
 import skills from '../../../data/skils';
-import ChevronIcon from '../../../icons/ChevronIcon/ChevronIcon';
 import GithubIcon from '../../../icons/GithubIcon/GithubIcon';
 import ScrollUpIcon from '../../../icons/ScrollUpIcon/ScrollUpIcon';
 import ContactModal from './components/ContactModal/ContactModal';
+import ArrowBottomIcon from '../../../icons/ArrowBottomIcon/ArrowBottomIcon';
 
 const Home = () => {
 	const [skillsItems, setSkillsItems] = useState(5);
@@ -163,7 +163,7 @@ const Home = () => {
 						</Styles.SkillsCardList>
 						<Styles.SkillsCardExpandButtonContainer>
 							<Styles.SkillsCardExpandButton open={listOpen} onClick={handleExpandCard}>
-								<ChevronIcon size='md'/>
+								<ArrowBottomIcon size='md'/>
 							</Styles.SkillsCardExpandButton>
 						</Styles.SkillsCardExpandButtonContainer>
 					</Card>
@@ -234,32 +234,38 @@ const Home = () => {
 				<Button {...swipeUpButtonProps()} />
 			</Styles.ScrollUpContainer>
 			<Styles.BasicInfosSection>
-				<Styles.LeftContainer>
-					<Styles.TitleWrapper>
-						<Styles.TitleBox>
-							<Styles.AngleBracket>
-								{homeLocale.chaveLabel}
-							</Styles.AngleBracket>
-							<Styles.Title>{homeLocale.devFrontLabel}</Styles.Title>
-						</Styles.TitleBox>
-						<Styles.SubTitle>{homeLocale.helloLabel}</Styles.SubTitle>
-					</Styles.TitleWrapper>
-					<Styles.ButtonsContainer>
-						<Button {...linkedinButtonProps()} />
-						<Button {...githubButtonProps()} />
-					</Styles.ButtonsContainer>
-				</Styles.LeftContainer>
-				<Styles.RightContainer>
-					<Styles.DotsContainer>
-						<Dots size='lg' />
-					</Styles.DotsContainer>
-					<Styles.PresentationContainer>
-						<Styles.Circle />
-						<Styles.Text>
-							{homeLocale.presentationLabel}
-						</Styles.Text>
-					</Styles.PresentationContainer>
-				</Styles.RightContainer>
+				<Styles.BasicInfosWrapper>
+					<Styles.LeftContainer>
+						<Styles.TitleWrapper>
+							<Styles.TitleBox>
+								<Styles.AngleBracket>
+									{homeLocale.chaveLabel}
+								</Styles.AngleBracket>
+								<Styles.Title>{homeLocale.devFrontLabel}</Styles.Title>
+							</Styles.TitleBox>
+							<Styles.SubTitle>{homeLocale.helloLabel}</Styles.SubTitle>
+						</Styles.TitleWrapper>
+						<Styles.ButtonsContainer>
+							<Styles.Wrapper>
+								<Button {...linkedinButtonProps()} />
+							</Styles.Wrapper>
+							<Styles.Wrapper>
+								<Button {...githubButtonProps()} />
+							</Styles.Wrapper>
+						</Styles.ButtonsContainer>
+					</Styles.LeftContainer>
+					<Styles.RightContainer>
+						<Styles.DotsContainer>
+							<Dots size='lg' />
+						</Styles.DotsContainer>
+						<Styles.PresentationContainer>
+							<Styles.Circle />
+							<Styles.Text>
+								{homeLocale.presentationLabel}
+							</Styles.Text>
+						</Styles.PresentationContainer>
+					</Styles.RightContainer>
+				</Styles.BasicInfosWrapper>
 			</Styles.BasicInfosSection>
 
 			<HomeSection {...projectsSectionProps()} />

@@ -4,21 +4,21 @@ import { Locales } from '../../locales/locales.br';
 import NavbarButton from '../NavbarButton/NavbarButton';
 import { FloatMenuOption } from '../NavbarButton/NavbarButton.types';
 import Logo from '../Logo/Logo';
+import BrazilFlagIcon from '../../icons/BrazilFlagIcon/BrazilFlagIcon';
+import UsaFlagIcon from '../../icons/UsaFlagIcon/UsaFlagIcon';
 
 const Navbar = () => {
 	const floatMenuOptions: FloatMenuOption[] = [
 		{
-			label: 'PT-BR',
+			id: 'brazil',
+			label: <BrazilFlagIcon />,
 			handleClick: () => null,
 		},
 		{
-			label: 'EN',
+			id: 'usa',
+			label: <UsaFlagIcon />,
 			handleClick: () => null,
 		},
-		{
-			label: 'ES',
-			handleClick: () => null,
-		}
 	];
 
 	const handleSwipeUp = () => {
@@ -36,7 +36,7 @@ const Navbar = () => {
 					<NavbarButton text={Locales.navbar.projectsButton} />
 					<NavbarButton text={Locales.navbar.aboutMeButton} />
 					<NavbarButton text={Locales.navbar.contactsButton} />
-					<NavbarButton floatMenuList={floatMenuOptions} />
+					<NavbarButton listOptions={floatMenuOptions} />
 				</Styles.ButtonsContainer>
 			</Styles.NavbarWrapper>
 		</Styles.Header>

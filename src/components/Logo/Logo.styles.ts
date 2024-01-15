@@ -11,5 +11,9 @@ export const Wrapper = styled.div`
     user-select: none;
     font-size: ${size === 'lg' && '24px'};
     font-size: ${size === 'sm' && '16px'};
+
+    @media (max-width: ${defaultTheme.devicesScreen.tablet}) {
+      font-size: 16px;
+    }
   `}
 `;

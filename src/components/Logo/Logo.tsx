@@ -6,7 +6,7 @@ const Logo = ({
 	size='lg',
 }: LogoProps) => {
 	return (
-		<Styles.Wrapper size={size}>@henrique-carvalho</Styles.Wrapper>
+		<Styles.Wrapper size={size}>{'<henrique-carvalho />'}</Styles.Wrapper>
 	);
 };
 

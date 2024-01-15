@@ -51,6 +51,19 @@ export const Text = styled.p`
   }
 `;
 
+export const Label = styled.div`
+  svg {
+    fill: ${defaultTheme.colors.gray};
+    transition: fill 0.2s;
+  }
+  
+  &:hover {
+    svg {
+      fill: ${defaultTheme.colors.white};
+    }
+  }
+`;
+
 export const Bar = styled.span`
   color: ${defaultTheme.colors.secondary};
   user-select: none;
