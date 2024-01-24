@@ -20,12 +20,18 @@ const Footer = () => {
 		type: 'text' as ButtonVariants,
 	});
 
+	const handleSwipeUp = () => {
+		window.scrollTo(0, 0);
+	};
+
 	return (
 		<Styles.FooterContainer>
 			<Styles.Footer>
 				<Styles.TopContainer>
 					<Styles.LeftContainer>
-						<Logo size='sm' />
+						<Styles.LogoButton onClick={handleSwipeUp}>
+							<Logo size='sm' />
+						</Styles.LogoButton>
 						{Locales.footer.devFrontLabel}
 					</Styles.LeftContainer>
 					<Styles.MediaContainer>

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 export type FloatMenuOption = {
   id: string,
@@ -8,6 +8,7 @@ export type FloatMenuOption = {
 
 export type NavbarButtonProps = {
   text?: string,
+  selectedOptionDefault?: FloatMenuOption,
   listOptions?: FloatMenuOption[],
-  handleClick?: () => void,
+  sectionId?: string,
 };

@@ -1,7 +1,22 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import defaultTheme from '../../../assets/styles/deafultTheme';
 
 export const Wrapper = styled.div``;
+
+const buttonAnimation = keyframes`
+  from {
+    opacity: 0;
+    margin-bottom: 70px;
+  }
+  to {
+    opacity: 100%;
+    margin-bottom: 0;
+  }
+`;
+
+export const ButtonWrapper = styled(Wrapper)`
+  animation: ${buttonAnimation} 1s;
+`;
 
 export const BasicInfosSection = styled.section`
   align-items: center;
@@ -14,12 +29,12 @@ export const BasicInfosSection = styled.section`
   max-width: ${defaultTheme.devicesScreen.default};
 
   @media (max-width: ${defaultTheme.devicesScreen.default}) {
-    padding: 128px 16px;
+    padding: 0 16px;
   }
 
   @media (max-width: ${defaultTheme.devicesScreen.tablet}) {
-    margin-top: 0;
     gap: 36px;
+    margin-top: 0;
   }
 `;
 
@@ -35,8 +50,9 @@ export const BasicInfosWrapper = styled.div`
   }
 
   @media (max-width: ${defaultTheme.devicesScreen.mobile}) {
-    gap: 90px;
+    gap: 80px;
     height: auto;
+    margin-top: 16px;
   }
 `;
 
@@ -48,12 +64,22 @@ export const ScrollUpContainer = styled.div`
   ${({visible = false}: ScrollUpContainerProps) => css`
     opacity: ${!visible && '0'};
     position: fixed;
-    margin-top: 40vh;
+    margin-top: ${!visible ? '50vh' : '40vh'};
     right: 1%;
     transition: .2s;
 
     button {
       cursor: ${!visible && 'auto'};
+    }
+
+    @media (max-width: ${defaultTheme.devicesScreen.default}) {
+      background: ${defaultTheme.colors.background};
+      bottom: 0;
+      right: 0;
+      border-radius: 50% 0 0 0;
+      box-shadow: 0 0 5px ${defaultTheme.colors.primary};
+      padding: 8px;
+      margin-top: auto;
     }
   `}
 `;
@@ -100,6 +126,10 @@ export const SubTitle = styled.h2`
   @media (max-width: ${defaultTheme.devicesScreen.tablet}) {
     font-size: 16px;
   }
+
+  @media (max-height: 720px) {
+    display: none;
+  }
 `;
 
 export const TitleBox = styled.div`
@@ -118,20 +148,36 @@ export const AngleBracket = styled.span`
   }
 `;
 
-export const Title = styled.h1`
-  color: ${defaultTheme.colors.primary};
-  font-size: 72px;
-  font-weight: 600;
+export const TitleContainer = styled.div`
+  height: 188px;
   max-width: 600px;
 
+  h1 {
+    color: ${defaultTheme.colors.primary};
+    font-size: 72px;
+    font-weight: 600;
+  }
+
   @media (max-width: ${defaultTheme.devicesScreen.mobile}) {
-    font-size: 36px;
+    height: 96px;
+    max-width: 420px;
+
+    h1 {
+      font-size: 36px;
+    }
   }
 `;
 
 export const Text = styled.p`
   color: ${defaultTheme.colors.gray};
   font-size: 24px;
+  font-weight: 300;
+
+  em {
+    color: ${defaultTheme.colors.gray};
+    font-style: unset;
+    font-weight: 700;
+  }
 
   @media (max-width: ${defaultTheme.devicesScreen.mobile}) {
     font-size: 16px;
@@ -142,7 +188,7 @@ export const ButtonsContainer = styled.div`
   display: flex;
   gap: 16px;
 
-  @media (max-width: ${defaultTheme.devicesScreen.mobile}) {
+  @media (max-width: ${defaultTheme.devicesScreen.tablet}) {
     margin-top: 32px;
   }
 `;
@@ -161,7 +207,7 @@ export const PresentationContainer = styled.div`
   gap: 12px;
   padding: 8px;
   margin-top: 32px;
-  max-width: 400px;
+  max-width: 440px;
 
   @media (max-width: ${defaultTheme.devicesScreen.tablet}) {
     max-width: 80%;
@@ -181,12 +227,20 @@ export const ContactContainer = styled.div`
   justify-content: space-between;
   gap: 112px;
   width: 50%;
+
+  @media (max-width: ${defaultTheme.devicesScreen.tablet}) {
+    width: 100%;
+  }
 `;
 
 export const AboutContainer = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 112px;
+
+  @media (max-width: ${defaultTheme.devicesScreen.mobile}) {
+    flex-direction: column;
+  }
 `;
 
 export const AboutMeWrapper = styled(Wrapper)`

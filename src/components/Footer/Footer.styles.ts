@@ -16,8 +16,14 @@ export const Footer = styled.footer`
   max-width: ${defaultTheme.devicesScreen.default};
 
   @media (max-width: ${defaultTheme.devicesScreen.default}) {
-    padding: 0 16px;
+    padding: 48px 16px;
   }
+`;
+
+export const LogoButton = styled.button`
+  background: transparent;
+  border: none;
+  cursor: pointer;
 `;
 
 export const TopContainer = styled.div`

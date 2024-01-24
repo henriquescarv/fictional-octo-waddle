@@ -4,13 +4,12 @@ import defaultTheme from '../../../../../assets/styles/deafultTheme';
 export const Wrapper = styled.div``;
 
 export const HomeSection = styled.section`
-  margin: 80px 0 160px 0;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
+  padding: 120px 0;
   max-width: ${defaultTheme.devicesScreen.default};
 
   @media (max-width: ${defaultTheme.devicesScreen.default}) {
-    padding: 0 16px;
+    padding: 80px 16px;
   }
 `;
 
@@ -31,6 +30,10 @@ export const SectionTitleBar = styled.span`
   font-size: 32px;
   font-weight: 500;
   user-select: none;
+
+  @media (max-width: ${defaultTheme.devicesScreen.mobile}) {
+    font-size: 20px;
+  }
 `;
 
 export const SectionTitle = styled.h3`
@@ -38,19 +41,36 @@ export const SectionTitle = styled.h3`
   font-size: 32px;
   font-weight: 500;
   user-select: none;
+  white-space: nowrap;
+
+  @media (max-width: ${defaultTheme.devicesScreen.mobile}) {
+    font-size: 20px;
+  }
 `;
 
 export const SectionTitleLine = styled.div`
   border: 1px solid ${defaultTheme.colors.primary};
-  width: 44%;
+  width: 40%;
 `;
 
 export const ContentWrapper = styled(FlexWrapper)`
   display: flex;
   gap: 16px;
   width: 100%;
+
+  @media (max-width: ${defaultTheme.devicesScreen.mobile}) {
+    flex-direction: column;
+    gap: 64px;
+  }
 `;
 
 export const ButtonWrapper = styled(Wrapper)`
   margin-left: auto;
+
+  @media (max-width: ${defaultTheme.devicesScreen.mobile}) {
+    button {
+      font-size: 16px;
+      white-space: nowrap;
+    }
+  }
 `;

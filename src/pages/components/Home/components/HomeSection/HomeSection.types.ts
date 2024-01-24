@@ -4,4 +4,5 @@ export type HomeSectionProps = {
   title: string,
   content: React.JSX.Element,
   rightButton?: ButtonProps,
+  sectionId?: string,
 }

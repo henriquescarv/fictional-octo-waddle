@@ -1,18 +1,17 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavbarButtonProps, FloatMenuOption } from './NavbarButton.types';
 import * as Styles from './NavbarButton.styles';
 
 const NavbarButton = ({
 	text,
 	listOptions,
-	handleClick,
+	selectedOptionDefault,
+	sectionId,
 }: NavbarButtonProps) => {
-	const [selectedOption, setSelectedOption] = useState<FloatMenuOption | undefined>(undefined);
-
-	const switchRef = useRef<HTMLDivElement>(null);
+	const [selectedOption, setSelectedOption] = useState<FloatMenuOption | undefined>(selectedOptionDefault);
 
 	useEffect(() => {
-		if (listOptions) {
+		if (listOptions && !selectedOptionDefault) {
 			setSelectedOption(listOptions?.[0]);
 		}
 	}, []);
@@ -22,7 +21,7 @@ const NavbarButton = ({
 	return (
 		<>
 			{listOptions ? (
-				<Styles.FloatMenuContainer ref={switchRef}>
+				<Styles.FloatMenuContainer>
 					<Styles.FloatMenuButton onClick={() => setSelectedOption(optionToSet)}>
 						<Styles.Label>
 							{selectedOption?.label}
@@ -30,10 +29,10 @@ const NavbarButton = ({
 					</Styles.FloatMenuButton>
 				</Styles.FloatMenuContainer>
 			) : (
-				<Styles.Button onClick={handleClick}>
-					<Styles.Bar>{'/'}</Styles.Bar>
+				<Styles.Anchor href={sectionId}>
+					<Styles.Bar>{'#'}</Styles.Bar>
 					<Styles.Text>{text}</Styles.Text>
-				</Styles.Button>
+				</Styles.Anchor>
 			)}
 		</>
 	);

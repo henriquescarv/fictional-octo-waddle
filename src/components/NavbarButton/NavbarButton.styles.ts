@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import defaultTheme from '../../assets/styles/deafultTheme';
 
-export const Button = styled.button`
+export const Anchor = styled.a`
   width: 100%;
   all: unset;
   cursor: pointer;
@@ -12,17 +12,21 @@ export const Button = styled.button`
       color: ${defaultTheme.colors.white};
     }
   }
+
+  @media (max-width: ${defaultTheme.devicesScreen.tablet}) {
+    font-size: 32px;
+  }
 `;
 
 export const FloatMenuButton = styled.div`
+  align-items: center;
   color: ${defaultTheme.colors.gray};
-  transition: 0.2s;
   cursor: pointer;
   display: flex;
   gap: 4px;
-  align-items: center;
-  width: 100%;
   justify-content: end;
+  transition: 0.2s;
+  width: 100%;
 
   &:hover {
     p {
@@ -51,6 +55,20 @@ export const Text = styled.p`
   }
 `;
 
+export const Element = styled.div`
+  svg {
+    transition: 0.2s;
+  }
+
+  &:hover {
+    color: ${defaultTheme.colors.white};
+
+    svg {
+      fill: ${defaultTheme.colors.white};
+    }
+  }
+`;
+
 export const Label = styled.div`
   svg {
     fill: ${defaultTheme.colors.gray};
@@ -68,10 +86,13 @@ export const Bar = styled.span`
   color: ${defaultTheme.colors.secondary};
   user-select: none;
   -webkit-user-drag: none;
+
+  @media (max-width: ${defaultTheme.devicesScreen.tablet}) {
+    color: ${defaultTheme.colors.primary};
+  }
 `;
 
 export const FloatMenuContainer = styled.div`
-  position: relative;
 `;
 
 export const FloatMenu = styled.div`

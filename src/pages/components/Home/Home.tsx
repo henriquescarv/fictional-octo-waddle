@@ -16,6 +16,7 @@ import GithubIcon from '../../../icons/GithubIcon/GithubIcon';
 import ScrollUpIcon from '../../../icons/ScrollUpIcon/ScrollUpIcon';
 import ContactModal from './components/ContactModal/ContactModal';
 import ArrowBottomIcon from '../../../icons/ArrowBottomIcon/ArrowBottomIcon';
+import { ReactTypical } from '@deadcoder0904/react-typical';
 
 const Home = () => {
 	const [skillsItems, setSkillsItems] = useState(5);
@@ -113,6 +114,7 @@ const Home = () => {
 
 		return {
 			title: homeLocale.homeSection.title,
+			sectionId: 'projects',
 			content: mountContent(),
 			rightButton: seeMoreButton() as ButtonProps,
 		};
@@ -173,6 +175,7 @@ const Home = () => {
 
 		return {
 			title: homeLocale.aboutSection.title,
+			sectionId: 'about-me',
 			content: mountAboutContent,
 			rightButton: seeMoreButton() as ButtonProps,
 		};
@@ -193,6 +196,7 @@ const Home = () => {
 
 		return {
 			title: homeLocale.contactSection.title,
+			sectionId: 'contact',
 			content: mountContactContent,
 		};
 	};
@@ -233,7 +237,7 @@ const Home = () => {
 			<Styles.ScrollUpContainer visible={swipeUpVisible}>
 				<Button {...swipeUpButtonProps()} />
 			</Styles.ScrollUpContainer>
-			<Styles.BasicInfosSection>
+			<Styles.BasicInfosSection id='home'>
 				<Styles.BasicInfosWrapper>
 					<Styles.LeftContainer>
 						<Styles.TitleWrapper>
@@ -241,17 +245,19 @@ const Home = () => {
 								<Styles.AngleBracket>
 									{homeLocale.chaveLabel}
 								</Styles.AngleBracket>
-								<Styles.Title>{homeLocale.devFrontLabel}</Styles.Title>
+								<Styles.TitleContainer>
+									<ReactTypical steps={[homeLocale.devFrontLabel, 500]} loop={Infinity} wrapper='h1' />
+								</Styles.TitleContainer>
 							</Styles.TitleBox>
 							<Styles.SubTitle>{homeLocale.helloLabel}</Styles.SubTitle>
 						</Styles.TitleWrapper>
 						<Styles.ButtonsContainer>
-							<Styles.Wrapper>
+							<Styles.ButtonWrapper>
 								<Button {...linkedinButtonProps()} />
-							</Styles.Wrapper>
-							<Styles.Wrapper>
+							</Styles.ButtonWrapper>
+							<Styles.ButtonWrapper>
 								<Button {...githubButtonProps()} />
-							</Styles.Wrapper>
+							</Styles.ButtonWrapper>
 						</Styles.ButtonsContainer>
 					</Styles.LeftContainer>
 					<Styles.RightContainer>

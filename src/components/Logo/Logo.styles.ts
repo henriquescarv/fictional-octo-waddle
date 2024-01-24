@@ -11,6 +11,7 @@ export const Wrapper = styled.div`
     user-select: none;
     font-size: ${size === 'lg' && '24px'};
     font-size: ${size === 'sm' && '16px'};
+    font-weight: 600;
 
     @media (max-width: ${defaultTheme.devicesScreen.tablet}) {
       font-size: 16px;

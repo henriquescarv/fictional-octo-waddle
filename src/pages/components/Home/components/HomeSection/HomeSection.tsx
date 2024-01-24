@@ -3,9 +3,9 @@ import { HomeSectionProps } from './HomeSection.types';
 import * as Styles from './HomeSection.styles';
 import Button from '../../../../../components/ui/Button/Button';
 
-const HomeSection = ({ title, content, rightButton }: HomeSectionProps) => {
+const HomeSection = ({ title, content, rightButton, sectionId }: HomeSectionProps) => {
 	return (
-		<Styles.HomeSection>
+		<Styles.HomeSection id={sectionId}>
 			<Styles.SectionHead>
 				<Styles.FlexWrapper>
 					<Styles.SectionTitleBar>/</Styles.SectionTitleBar>

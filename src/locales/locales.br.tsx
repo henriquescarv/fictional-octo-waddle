@@ -20,15 +20,20 @@ export const Locales = {
 	home: {
 		helloLabel: 'Olá, mundo! Sou o Henrique.',
 		chaveLabel: (<>{'> '}</>),
-		devFrontLabel: (
-			<>
-				{'Desenvolvedor Front-end'}
-			</>
-		),
+		devFrontLabel: 'Desenvolvedor Front-end',
 		linkedinButtonLabel: 'LinkedIn',
 		githubButtonLabel: 'GitHub',
 		cvButtonLabel: 'Baixar CV',
-		presentationLabel: 'Estudante de Sistemas de Informação. Trabalhando com desenvolvimento web desde 2022, em projetos que impactam milhares de usuários na América Latina.',
+		presentationLabel: (
+			<>
+				{'Estudante de '}
+				<em>Sistemas de Informação</em>
+				{'. Desde 2022 trabalhando em '}
+				{' em projetos que impactam milhares de usuários utilizando '}
+				<em>ReactJS</em>
+				{', entre outras tecnologias.'}
+			</>
+		),
 		
 		homeSection: {
 			title: 'projetos',

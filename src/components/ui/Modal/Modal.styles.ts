@@ -1,5 +1,14 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import defaultTheme from '../../../assets/styles/deafultTheme';
+
+const toLeftSlide = keyframes`
+  from {
+    left: 100vw;
+  }
+  to {
+    left: 0;
+  }
+`;
 
 export const Overlay = styled.div`
   align-items: center;
@@ -12,6 +21,10 @@ export const Overlay = styled.div`
   top: 0;
   width: 100vw;
   z-index: 1000;
+
+  @media (max-width: ${defaultTheme.devicesScreen.tablet}) {
+    animation: ${toLeftSlide} .2s;
+  }
 `;
 
 export const Wrapper = styled.div`
@@ -20,10 +33,19 @@ export const Wrapper = styled.div`
   border-radius: 16px;
   left: 50%;
   top: 50%;
+
+  @media (max-width: ${defaultTheme.devicesScreen.tablet}) {
+    height: 100vh;
+    width: 100vw;
+  }
 `;
 
 export const ContentWrapper = styled.div`
   position: relative;
+
+  @media (max-width: ${defaultTheme.devicesScreen.tablet}) {
+    height: 100%;
+  }
 `;
 
 export const CloseButtonWrapper = styled.div`
@@ -32,6 +54,11 @@ export const CloseButtonWrapper = styled.div`
   position: absolute;
   right: 0;
   float: right;
+
+  @media (max-width: ${defaultTheme.devicesScreen.tablet}) {
+    margin-top: 0px;
+    margin-right: 0px;
+  }
 `;
 
 export const CloseButton = styled.button`
