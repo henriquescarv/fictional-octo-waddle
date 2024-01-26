@@ -77,7 +77,7 @@ export const ScrollUpContainer = styled.div`
       bottom: 0;
       right: 0;
       border-radius: 50% 0 0 0;
-      box-shadow: 0 0 5px ${defaultTheme.colors.primary};
+      box-shadow: 0 0 5px black;
       padding: 8px;
       margin-top: auto;
     }
@@ -224,8 +224,9 @@ export const DefaultText = styled.div`
 
 export const ContactContainer = styled.div`
   display: flex;
-  justify-content: space-between;
   gap: 112px;
+  justify-content: space-between;
+  margin-bottom: 72px;
   width: 50%;
 
   @media (max-width: ${defaultTheme.devicesScreen.tablet}) {
@@ -239,7 +240,8 @@ export const AboutContainer = styled.div`
   gap: 112px;
 
   @media (max-width: ${defaultTheme.devicesScreen.mobile}) {
-    flex-direction: column;
+    flex-direction: column-reverse;
+    gap: 64px;
   }
 `;
 
@@ -247,6 +249,10 @@ export const AboutMeWrapper = styled(Wrapper)`
   display: flex;
   flex-direction: column;
   gap: 72px;
+
+  @media (max-width: ${defaultTheme.devicesScreen.mobile}) {
+    gap: 20px;
+  }
 `;
 
 export const AboutMeDescription = styled(DefaultText)`
@@ -261,8 +267,23 @@ export const SkillsCardList = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 8px;
-  padding: 16px;
-  transition: height 0.1s ease-in-out;
+  padding: 16px 16px 8px 16px;
+`;
+
+interface SkillsCardExpansiveListProps {
+  height: number | null,
+}
+
+export const SkillsCardExpansiveList = styled.ul`
+  ${({height = 264}: SkillsCardExpansiveListProps) => css`
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0 16px;
+    height: ${height}px;
+    opacity: ${height ? 1 : 0};
+    transition: 0.1s ease-in-out;
+  `}
 `;
 
 export const SkillsCardExpandButtonContainer = styled.div`
@@ -286,11 +307,17 @@ export const SkillsCardExpandButton = styled.button`
   `};
 `;
 
+interface SkillProps {
+  open?: boolean,
+}
+
 export const Skill = styled.li`
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  list-style: none;
+  ${({open = true}: SkillProps) => css`
+    display: ${open ? 'flex' : 'none'};
+    align-items: center;
+    gap: 8px;
+    list-style: none;
+  `};
 `;
 
 export const SkillText = styled.p`

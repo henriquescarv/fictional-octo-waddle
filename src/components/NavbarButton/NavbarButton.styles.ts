@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import defaultTheme from '../../assets/styles/deafultTheme';
 
-export const Anchor = styled.a`
+export const Button = styled.button`
   width: 100%;
   all: unset;
   cursor: pointer;

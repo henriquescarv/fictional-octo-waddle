@@ -23,6 +23,10 @@ export const SectionHead = styled.div`
   gap: 16px;
   height: 100%;
   margin-bottom: 92px;
+
+  @media (max-width: ${defaultTheme.devicesScreen.mobile}) {
+    margin-bottom: 64px;
+  }
 `;
 
 export const SectionTitleBar = styled.span`

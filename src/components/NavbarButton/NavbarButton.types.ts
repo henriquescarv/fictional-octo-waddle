@@ -10,5 +10,5 @@ export type NavbarButtonProps = {
   text?: string,
   selectedOptionDefault?: FloatMenuOption,
   listOptions?: FloatMenuOption[],
-  sectionId?: string,
+  onClick?: () => void;
 };

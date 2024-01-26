@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import defaultTheme from '../../assets/styles/deafultTheme';
 
 export const Wrapper = styled.div`
@@ -16,7 +16,6 @@ export const Header = styled.header`
 
 export const NavbarWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
   padding: 32px 0 16px;
   margin-left: auto;
@@ -40,6 +39,7 @@ export const ButtonsContainer = styled.div`
   align-items: center;  
   display: flex;
   gap: 32px;
+  margin-left: auto;
 
   p {
     user-select: none;
@@ -53,6 +53,7 @@ export const ButtonsContainer = styled.div`
 export const MobileButtonsContainer = styled.div`
   display: flex;
   flex-direction: column;
+  height: 100%;
   gap: 20px;
 `;
 
@@ -61,18 +62,62 @@ export const MobileSideMenu = styled.div`
 
   @media (max-width: ${defaultTheme.devicesScreen.tablet}) {
     display: flex;
+    margin-left: auto;
   }
 `;
 
 export const LocaleMobileWrapper = styled.div`
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  justify-content: center;
   display: flex;
+  justify-content: center;
+  margin-top: auto;
+  width: 100%;
 
   svg {
     height: 64px;
+  }
+`;
+
+interface ModalWrapperProps {
+  isOpen: boolean;
+}
+
+export const ModalWrapper = styled.div`
+  ${({isOpen}: ModalWrapperProps) => css`
+    background: ${defaultTheme.colors.background};
+    clip-path: ${isOpen ? 'circle(100vh)' : 'circle(0 at 100% 0%)'};
+    height: 100vh;
+    left: 0;
+    padding: 24px 16px 90px 16px;
+    position: fixed;
+    top: 0;
+    transition: .5s ease-out;
+    width: 100vw;
+
+    @media (min-width: ${defaultTheme.devicesScreen.tablet}) {
+      display: none;
+    }
+  `};
+`;
+
+export const CloseButtonWrapper = styled.div`
+  margin-top: -20px;
+  margin-right: -20px;
+  position: absolute;
+  right: 0;
+  padding: 24px;
+
+  @media (max-width: ${defaultTheme.devicesScreen.tablet}) {
+    margin-right: 0px;
+  }
+`;
+
+export const CloseButton = styled.button`
+  background: none;
+  border: none;
+  user-select: none;
+
+  &:hover {
+    cursor: pointer;
   }
 `;
 
@@ -93,8 +138,10 @@ const logoFade = keyframes`
   }
 `;
 
-export const MobileLogoWrapper = styled.div`
-  animation: ${logoFade} .5s;
+export const MobileLogoButton = styled.button`
+  background: none;
+  border: none;
+  animation: ${logoFade} 1s;
   cursor: pointer;
 `;
 

@@ -6,7 +6,7 @@ const NavbarButton = ({
 	text,
 	listOptions,
 	selectedOptionDefault,
-	sectionId,
+	onClick,
 }: NavbarButtonProps) => {
 	const [selectedOption, setSelectedOption] = useState<FloatMenuOption | undefined>(selectedOptionDefault);
 
@@ -29,10 +29,10 @@ const NavbarButton = ({
 					</Styles.FloatMenuButton>
 				</Styles.FloatMenuContainer>
 			) : (
-				<Styles.Anchor href={sectionId}>
+				<Styles.Button onClick={onClick}>
 					<Styles.Bar>{'#'}</Styles.Bar>
 					<Styles.Text>{text}</Styles.Text>
-				</Styles.Anchor>
+				</Styles.Button>
 			)}
 		</>
 	);

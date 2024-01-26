@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import * as Styles from './Home.styles';
 import { Locales } from '../../../locales/locales.br';
 import Button from '../../../components/ui/Button/Button';
@@ -19,10 +19,13 @@ import ArrowBottomIcon from '../../../icons/ArrowBottomIcon/ArrowBottomIcon';
 import { ReactTypical } from '@deadcoder0904/react-typical';
 
 const Home = () => {
-	const [skillsItems, setSkillsItems] = useState(5);
 	const [swipeUpVisible, setSwipeUpVisible] = useState(false);
 	const [showContactModal, setShowContactModal] = useState(false);
+	const [listOpen, setListOpen] = useState(true);
+	const [heightEl, setHeightEl] = useState(0);
 	const homeLocale = Locales.home;
+
+	const listRef = useRef<HTMLUListElement>(null);
 
 	const cvButtonLabel = () => (
 		<>
@@ -121,11 +124,8 @@ const Home = () => {
 	};
 
 	const aboutSectionProps = () => {
-		const skillsList = skills.slice(0, skillsItems);
-		const listOpen = skillsList.length === skills.length;
-
 		const handleExpandCard = () => {
-			listOpen ? setSkillsItems(5) : setSkillsItems(skills.length);
+			setListOpen(!listOpen);
 		};
 
 		const seeMoreButton = () => {
@@ -156,13 +156,21 @@ const Home = () => {
 				<Styles.SkillsWrapper>
 					<Card title={homeLocale.aboutSection.skills} titlePosition='end' variant='secondary'>
 						<Styles.SkillsCardList>
-							{skills.slice(0, skillsItems).map((skill, index) => (
+							{skills.slice(0, 5).map((skill, index) => (
 								<Styles.Skill key={index}>
 									<Styles.LogoImage src={skill.imageUrl} />
 									<Styles.SkillText>{skill.name}</Styles.SkillText>
 								</Styles.Skill>
 							))}
 						</Styles.SkillsCardList>
+						<Styles.SkillsCardExpansiveList ref={listRef} height={listOpen ? heightEl : 0}>
+							{skills.slice(5, skills.length).map((skill, index) => (
+								<Styles.Skill key={index} open={listOpen}>
+									<Styles.LogoImage src={skill.imageUrl} />
+									<Styles.SkillText>{skill.name}</Styles.SkillText>
+								</Styles.Skill>
+							))}
+						</Styles.SkillsCardExpansiveList>
 						<Styles.SkillsCardExpandButtonContainer>
 							<Styles.SkillsCardExpandButton open={listOpen} onClick={handleExpandCard}>
 								<ArrowBottomIcon size='md'/>
@@ -212,6 +220,12 @@ const Home = () => {
 			onClick: handleSwipeUp,
 		} as ButtonProps;
 	}, [swipeUpVisible]);
+
+	useEffect(() => {
+		const listHeight = listRef.current && listRef.current.scrollHeight;
+		setHeightEl(listHeight || 0);
+		setListOpen(false);
+	}, []);
 
 	useEffect(() => {
 		const handleScroll = () => {
