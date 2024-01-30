@@ -6,6 +6,7 @@ const defaultTheme = {
 		primary: '#41E482',
 		primaryLight: '#B9FFC4',
 		secondary: '#DA44CB',
+		error: '#ff6666',
 
 		buttonPrimary: '#C778DD33',
 		buttonPrimaryHover: '#C778DD64'

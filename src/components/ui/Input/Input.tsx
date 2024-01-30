@@ -2,9 +2,14 @@ import React from 'react';
 import { InputProps } from './Input.types';
 import * as Styles from './Input.styles';
 
-const Input = ({id = 'input', type = 'text', value, placeholder = '', onChange, onChangeTextarea}: InputProps) => {
+const Input = ({id = 'input', type = 'text', value = '', placeholder = '', error = '', onChange, onChangeTextarea, onBlur}: InputProps) => {
 	return (
 		<Styles.Wrapper>
+			{!!value.length && (
+				<Styles.InputTitleWrapper>
+					{placeholder}
+				</Styles.InputTitleWrapper>
+			)}
 			{type === 'text' && (
 				<Styles.Input
 					id={id}
@@ -12,6 +17,7 @@ const Input = ({id = 'input', type = 'text', value, placeholder = '', onChange, 
 					value={value}
 					placeholder={placeholder}
 					onChange={onChange}
+					onBlur={onBlur}
 				/>
 			)}
 			{type === 'textarea' && (
@@ -21,6 +27,11 @@ const Input = ({id = 'input', type = 'text', value, placeholder = '', onChange, 
 					placeholder={placeholder}
 					onChange={onChangeTextarea}
 				/>
+			)}
+			{!!error.length && (
+				<Styles.InputError>
+					{error}
+				</Styles.InputError>
 			)}
 		</Styles.Wrapper>
 	);

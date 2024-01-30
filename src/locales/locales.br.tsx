@@ -10,11 +10,16 @@ export const Locales = {
 	},
 
 	contactsModal: {
+		title: 'Envie uma mensagem :)',
 		namePlaceholder: 'Nome',
 		emailPlaceholder: 'E-mail',
 		titlePlaceholder: 'Título',
 		messagePlaceholder: 'Mensagem',
 		sendButtonLabel: 'Enviar',
+		errors: {
+			emptyField: 'Preencha este campo',
+			email: 'Digite um email válido',
+		},
 	},
 
 	home: {

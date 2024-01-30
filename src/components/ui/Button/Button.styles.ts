@@ -11,7 +11,6 @@ const SharedButtonStyles = styled.button`
     align-items: center;
     border-radius: 8px;
     cursor: ${!disabled && 'pointer'};
-    display: flex;
     gap: 8px;
     font-size: 20px;
     padding: 8px 16px;
@@ -22,6 +21,7 @@ const SharedButtonStyles = styled.button`
 
 export const PrimaryButton = styled(SharedButtonStyles)`
   background: ${defaultTheme.colors.buttonPrimary};
+  display: flex;
 
   &:hover {
     background: ${defaultTheme.colors.buttonPrimaryHover};
@@ -30,6 +30,7 @@ export const PrimaryButton = styled(SharedButtonStyles)`
 
 export const SecondaryButton = styled(SharedButtonStyles)`
   border: 1px solid ${defaultTheme.colors.secondary};
+  display: flex;
 
   &:hover {
     background: ${defaultTheme.colors.buttonPrimary};
@@ -37,6 +38,7 @@ export const SecondaryButton = styled(SharedButtonStyles)`
 `;
 
 export const TextButton = styled(SharedButtonStyles)`
+  display: flex;
   padding: 0;
 
   svg {
@@ -56,6 +58,7 @@ export const HiperlinkButton = styled(SharedButtonStyles)`
   padding: 0;
   color: ${defaultTheme.colors.primary};
   text-decoration: underline;
+  user-select: all;
 
   svg {
     transition: .2s;
