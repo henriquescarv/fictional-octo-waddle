@@ -3,7 +3,7 @@ import defaultTheme from '../../../../../assets/styles/deafultTheme';
 
 export const Wrapper = styled.div``;
 
-export const HomeSection = styled.section`
+export const Section = styled.section`
   margin: 0 auto;
   padding: 120px 0;
   max-width: ${defaultTheme.devicesScreen.default};

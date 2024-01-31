@@ -1,38 +1,22 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import * as Styles from './Home.styles';
 import { Locales } from '../../../locales/locales.br';
 import Button from '../../../components/ui/Button/Button';
-import DownloadIcon from '../../../icons/DownloadIcon/DownloadIcon';
-import defaultTheme from '../../../assets/styles/deafultTheme';
 import Dots from '../../../elements/Dots/Dots';
-import HomeSection from './components/HomeSection/HomeSection';
-import HorizontalArrow from '../../../icons/HorizontalArrow/HorizontalArrow';
 import { ButtonProps, ButtonVariants } from '../../../components/ui/Button/Button.types';
-import projects from '../../../data/projetcs';
-import ProjectsCard from './components/ProjectsCard/ProjectsCard';
-import Card from '../../../components/ui/Card/Card';
-import skills from '../../../data/skils';
 import GithubIcon from '../../../icons/GithubIcon/GithubIcon';
 import ScrollUpIcon from '../../../icons/ScrollUpIcon/ScrollUpIcon';
 import ContactModal from './components/ContactModal/ContactModal';
-import ArrowBottomIcon from '../../../icons/ArrowBottomIcon/ArrowBottomIcon';
 import { ReactTypical } from '@deadcoder0904/react-typical';
+import ProjectsSection from './ProjectsSection/ProjectsSection';
+import ContactSection from './ContactSection/ContactSection';
+import AboutSection from './AboutSection/AboutSection';
 
 const Home = () => {
 	const [swipeUpVisible, setSwipeUpVisible] = useState(false);
 	const [showContactModal, setShowContactModal] = useState(false);
-	const [listOpen, setListOpen] = useState(true);
-	const [heightEl, setHeightEl] = useState(0);
+
 	const homeLocale = Locales.home;
-
-	const listRef = useRef<HTMLUListElement>(null);
-
-	const cvButtonLabel = () => (
-		<>
-			{homeLocale.cvButtonLabel}
-			<DownloadIcon size='md' color={defaultTheme.colors.white} />
-		</>
-	);
 
 	const linkedinButtonProps = () => {
 		const handleClickLinkedin = () => {
@@ -64,151 +48,6 @@ const Home = () => {
 		};
 	};
 
-	const handleClickDownloadCV = () => {
-		const pdfUrl = process.env.PUBLIC_URL + '/curriculo.pdf';
-		const link = document.createElement('a');
-		link.href = pdfUrl;
-		link.download = 'Currículo - Henrique.pdf';
-		document.body.appendChild(link);
-		link.click();
-		document.body.removeChild(link);
-	};
-
-	const projectsSectionProps = () => {
-		const seeMoreButton = () => {
-			const seeMoreButtonLabel = (
-				<>
-					{homeLocale.homeSection.seeMoreButton}
-					<HorizontalArrow />
-				</>
-			);
-
-			const handleClick = () => {}; // leva para a página de projetos
-
-			return {
-				type: 'text',
-				label: seeMoreButtonLabel,
-				onClick: handleClick,
-			};
-		};
-
-		const mountContent = () => {
-			const defaultButtonProps = (buttonUrl: string, type?: 'primary' | 'secondary' | 'text') => ({
-				type,
-				label: homeLocale.homeSection.seeProjectButton,
-				onClick: () => window.open(buttonUrl),
-			});
-
-			return (
-				<>
-					{projects.map(project => (
-						<ProjectsCard
-							title={project.title}
-							key={project.title}
-							imageUrl={project.imageUrl}
-							imageAlt={project.imageAlt}
-							description={project.description}
-							button={defaultButtonProps(project.projectUrl)}
-						/>
-					))}
-				</>
-			);
-		};
-
-		return {
-			title: homeLocale.homeSection.title,
-			sectionId: 'projects',
-			content: mountContent(),
-			rightButton: seeMoreButton() as ButtonProps,
-		};
-	};
-
-	const aboutSectionProps = () => {
-		const handleExpandCard = () => {
-			setListOpen(!listOpen);
-		};
-
-		const seeMoreButton = () => {
-			const seeMoreButtonLabel = (
-				<>
-					{homeLocale.homeSection.seeMoreButton}
-					<HorizontalArrow />
-				</>
-			);
-
-			const handleClick = () => {}; // leva para a página de sobre mim
-
-			return {
-				type: 'text',
-				label: seeMoreButtonLabel,
-				onClick: handleClick,
-			};
-		};
-
-		const mountAboutContent = (
-			<Styles.AboutContainer>
-				<Styles.AboutMeWrapper>
-					<Styles.AboutMeDescription>{homeLocale.aboutSection.description}</Styles.AboutMeDescription>
-					<Styles.ButtonsContainer>
-						<Button label={cvButtonLabel()} onClick={handleClickDownloadCV} />
-					</Styles.ButtonsContainer>
-				</Styles.AboutMeWrapper>
-				<Styles.SkillsWrapper>
-					<Card title={homeLocale.aboutSection.skills} titlePosition='end' variant='secondary'>
-						<Styles.SkillsCardList>
-							{skills.slice(0, 5).map((skill, index) => (
-								<Styles.Skill key={index}>
-									<Styles.LogoImage src={skill.imageUrl} />
-									<Styles.SkillText>{skill.name}</Styles.SkillText>
-								</Styles.Skill>
-							))}
-						</Styles.SkillsCardList>
-						<Styles.SkillsCardExpansiveList ref={listRef} height={listOpen ? heightEl : 0}>
-							{skills.slice(5, skills.length).map((skill, index) => (
-								<Styles.Skill key={index} open={listOpen}>
-									<Styles.LogoImage src={skill.imageUrl} />
-									<Styles.SkillText>{skill.name}</Styles.SkillText>
-								</Styles.Skill>
-							))}
-						</Styles.SkillsCardExpansiveList>
-						<Styles.SkillsCardExpandButtonContainer>
-							<Styles.SkillsCardExpandButton open={listOpen} onClick={handleExpandCard}>
-								<ArrowBottomIcon size='md'/>
-							</Styles.SkillsCardExpandButton>
-						</Styles.SkillsCardExpandButtonContainer>
-					</Card>
-				</Styles.SkillsWrapper>
-			</Styles.AboutContainer>
-		);
-
-		return {
-			title: homeLocale.aboutSection.title,
-			sectionId: 'about-me',
-			content: mountAboutContent,
-			rightButton: seeMoreButton() as ButtonProps,
-		};
-	};
-
-	const contactSectionProps = () => {
-		const handleContactMe = () => {
-			setShowContactModal(!showContactModal);
-		};
-
-		const mountContactContent = (
-			<Styles.ContactContainer>
-				<Styles.AboutMeDescription>
-					{homeLocale.contactSection.description(handleContactMe)}
-				</Styles.AboutMeDescription>
-			</Styles.ContactContainer>
-		);
-
-		return {
-			title: homeLocale.contactSection.title,
-			sectionId: 'contact',
-			content: mountContactContent,
-		};
-	};
-
 	const handleSwipeUp = () => {
 		window.scrollTo(0, 0);
 	};
@@ -220,12 +59,6 @@ const Home = () => {
 			onClick: handleSwipeUp,
 		} as ButtonProps;
 	}, [swipeUpVisible]);
-
-	useEffect(() => {
-		const listHeight = listRef.current && listRef.current.scrollHeight;
-		setHeightEl(listHeight || 0);
-		setListOpen(false);
-	}, []);
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -288,9 +121,10 @@ const Home = () => {
 				</Styles.BasicInfosWrapper>
 			</Styles.BasicInfosSection>
 
-			<HomeSection {...projectsSectionProps()} />
-			<HomeSection {...aboutSectionProps()} />
-			<HomeSection {...contactSectionProps()} />
+			<ProjectsSection />
+			<AboutSection />
+			<ContactSection showContactModal={showContactModal} setShowContactModal={setShowContactModal} />
+
 			{showContactModal && <ContactModal isOpen={showContactModal} onClose={() => setShowContactModal(false)} />}
 		</Styles.Wrapper>
 	);

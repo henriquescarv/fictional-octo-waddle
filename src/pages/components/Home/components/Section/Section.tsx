@@ -1,11 +1,11 @@
 import React from 'react';
-import { HomeSectionProps } from './HomeSection.types';
-import * as Styles from './HomeSection.styles';
+import { SectionProps } from './Section.types';
+import * as Styles from './Section.styles';
 import Button from '../../../../../components/ui/Button/Button';
 
-const HomeSection = ({ title, content, rightButton, sectionId }: HomeSectionProps) => {
+const Section = ({ title, content, rightButton, sectionId }: SectionProps) => {
 	return (
-		<Styles.HomeSection id={sectionId}>
+		<Styles.Section id={sectionId}>
 			<Styles.SectionHead>
 				<Styles.FlexWrapper>
 					<Styles.SectionTitleBar>/</Styles.SectionTitleBar>
@@ -27,8 +27,8 @@ const HomeSection = ({ title, content, rightButton, sectionId }: HomeSectionProp
 			<Styles.ContentWrapper>
 				{content}
 			</Styles.ContentWrapper>
-		</Styles.HomeSection>
+		</Styles.Section>
 	);
 };
 
-export default HomeSection;
+export default Section;

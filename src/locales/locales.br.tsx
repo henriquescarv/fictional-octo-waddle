@@ -40,12 +40,13 @@ export const Locales = {
 			</>
 		),
 		
-		homeSection: {
+		projectsSection: {
 			title: 'projetos',
 			seeMoreButton: 'Ver tudo',
 			seeProjectButton: 'ver-projeto',
 		},
 		aboutSection: {
+			seeProjectButton: 'ver-projeto',
 			title: 'sobre-mim',
 			description: (
 				<>

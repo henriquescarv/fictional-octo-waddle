@@ -58,7 +58,7 @@ export const HiperlinkButton = styled(SharedButtonStyles)`
   padding: 0;
   color: ${defaultTheme.colors.primary};
   text-decoration: underline;
-  user-select: all;
+  user-select: auto;
 
   svg {
     transition: .2s;
