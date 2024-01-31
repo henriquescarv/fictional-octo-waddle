@@ -1,43 +1,56 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
+import reactLogo from '../assets/images/react_logo.png';
+import typescriptLogo from '../assets/images/typescript_logo.png';
+import styledComponentsLogo from '../assets/images/styled_components_logo.png';
+import jestLogo from '../assets/images/jest_logo.png';
+import reduxLogo from '../assets/images/redux_logo.png';
+import storybookLogo from '../assets/images/storybook_logo.png';
+import nextJsLogo from '../assets/images/next_js_logo.png';
+import gitLogo from '../assets/images/git_logo.png';
+import pythonLogo from '../assets/images/python_logo.png';
+import angularLogo from '../assets/images/angular_logo.png';
+
 const skills = [
 	{
 		name: 'React',
-		imageUrl: 'https://cdn1.iconfinder.com/data/icons/programing-development-8/24/react_logo-512.png',
+		imageUrl: reactLogo,
 	},
 	{
 		name: 'Typescript',
-		imageUrl: 'https://cdn.icon-icons.com/icons2/3915/PNG/512/typescript_logo_icon_249332.png',
-	},
-	{
-		name: 'Next.js',
-		imageUrl: 'https://seeklogo.com/images/N/next-js-logo-8FCFF51DD2-seeklogo.com.png',
+		imageUrl: typescriptLogo,
 	},
 	{
 		name: 'Styled Components',
-		imageUrl: 'https://creazilla-store.fra1.digitaloceanspaces.com/icons/3244483/styledcomponents-icon-md.png',
+		imageUrl: styledComponentsLogo,
 	},
 	{
 		name: 'Jest',
-		imageUrl: 'https://cdn4.iconfinder.com/data/icons/logos-brands-5/24/jest-512.png',
+		imageUrl: jestLogo,
 	},
 	{
 		name: 'Redux Saga',
-		imageUrl: 'https://cdn.iconscout.com/icon/free/png-256/free-redux-3627245-3029653.png',
+		imageUrl: reduxLogo,
 	},
 	{
 		name: 'Storybook',
-		imageUrl: 'https://cdn.icon-icons.com/icons2/2389/PNG/512/storybook_logo_icon_144839.png',
+		imageUrl: storybookLogo,
+	},
+	{
+		name: 'Next.js',
+		imageUrl: nextJsLogo,
 	},
 	{
 		name: 'Git',
-		imageUrl: 'https://cdn.icon-icons.com/icons2/2389/PNG/512/git_logo_icon_145254.png',
+		imageUrl: gitLogo,
 	},
 	{
 		name: 'Python',
-		imageUrl: 'https://cdn4.iconfinder.com/data/icons/scripting-and-programming-languages/512/Python_logo-512.png',
+		imageUrl: pythonLogo,
 	},
 	{
 		name: 'AngularJS',
-		imageUrl: 'https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/21_Angular_logo_logos-512.png',
+		imageUrl: angularLogo,
 	},
 ];
 

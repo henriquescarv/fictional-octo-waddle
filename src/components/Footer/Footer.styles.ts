@@ -56,10 +56,6 @@ export const MediaButtonsContainer = styled.div`
   gap: 8px;
 `;
 
-export const MediaButtonsImage = styled.img`
-  width: 32px;
-`;
-
 export const CopyrightContainer = styled.div`
   color: ${defaultTheme.colors.gray};
   text-align: center;

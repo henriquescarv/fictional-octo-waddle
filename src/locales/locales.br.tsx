@@ -33,9 +33,8 @@ export const Locales = {
 			<>
 				{'Estudante de '}
 				<em>Sistemas de Informação</em>
-				{'. Desde 2022 trabalhando em '}
-				{' em projetos que impactam milhares de usuários utilizando '}
-				<em>ReactJS</em>
+				{'. Desde 2022 impactando milhares de usuários com projetos que utilizam '}
+				<em>ReactJS, TypeScript, Redux, Jest</em>
 				{', entre outras tecnologias.'}
 			</>
 		),
