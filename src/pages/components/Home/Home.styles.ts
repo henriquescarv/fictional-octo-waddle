@@ -98,14 +98,30 @@ export const LeftContainer = styled(Container)`
 
 export const RightContainer = styled(Container)`
   align-items: end;
+  overflow: hidden;
+  padding: 18px 0;
+`;
+
+const dotsAnimation = keyframes`
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 0;
+    margin-right: -144px;
+    transform: rotate(90deg);
+  }
+  100% {
+    opacity: 100%;
+    margin-right: 32px;
+    transform: rotate(45deg);
+  }
 `;
 
 export const DotsContainer = styled.div`
+  animation: ${dotsAnimation} 3s;
   margin-right: 32px;
-
-  svg {
-    transform: rotate(45deg);
-  }
+  transform: rotate(45deg);
 
   @media (max-width: ${defaultTheme.devicesScreen.tablet}) {
     svg {
@@ -200,7 +216,19 @@ export const Circle = styled.div`
   min-width: 16px;
 `;
 
+const presentationAnimation = keyframes`
+  from {
+    opacity: 0;
+    margin-block-end: 90px;
+  }
+  to {
+    opacity: 100%;
+    margin-block-end: 0;
+  }
+`;
+
 export const PresentationContainer = styled.div`
+  animation: ${presentationAnimation} 2s;
   border: 1px solid ${defaultTheme.colors.gray};
   border-radius: 8px;
   display: flex;
@@ -211,6 +239,10 @@ export const PresentationContainer = styled.div`
 
   @media (max-width: ${defaultTheme.devicesScreen.tablet}) {
     max-width: 80%;
+  }
+
+  @media (max-width: ${defaultTheme.devicesScreen.mobile}) {
+    max-width: 100%;
   }
 `;
 
