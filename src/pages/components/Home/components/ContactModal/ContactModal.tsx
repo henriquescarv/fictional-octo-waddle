@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useCallback, useState } from 'react';
+import React, { ChangeEvent, useCallback, useState, useContext } from 'react';
 import Modal from '../../../../../components/ui/Modal/Modal';
 import { ContactModalProps, FormBodyProps } from './ContactModal.types';
 import Input from '../../../../../components/ui/Input/Input';
@@ -7,6 +7,7 @@ import * as Styles from './ContactModal.styles';
 import Button from '../../../../../components/ui/Button/Button';
 import emailjs from '@emailjs/browser';
 import useValidator from '../../../../../hooks/useValidator/useValidator';
+import { SnackbarContext } from '../../../../../providers/SnackbarProvider/SnackbarProvider';
 
 const fieldsDefault = {
 	nameInput: '',
@@ -19,6 +20,8 @@ const ContactModal = ({isOpen, onClose}: ContactModalProps) => {
 	const [formBody, setFormBody] = useState<FormBodyProps>(fieldsDefault);
 	const [errors, setErrors] = useState<FormBodyProps>(fieldsDefault);
 	// max length pros inputs
+
+	const { setDisplaySnackbar } = useContext(SnackbarContext);
 
 	const { email } = useValidator();
 	const ContactModalLocale = Locales.contactsModal;
@@ -90,19 +93,24 @@ const ContactModal = ({isOpen, onClose}: ContactModalProps) => {
 			};
 
 			emailjs.send('service_sotc48h', 'template_2quaj4f', templateParams, 'noSDoE-pcEX5OJzEc')
-				.then((r) => {
-					alert(`EMAIL ENVIADO - STATUS ${r.status}`);
+				.then(() => {
+					onClose();
+					setDisplaySnackbar({
+						message: ContactModalLocale.sendSuccess,
+						status: 'success',
+					});
 				})
-				.catch((e) => {
-					alert(`NÃO FOI POSSÍVEL ENVIAR A MENSAGEM - ${e}`);
-					console.log(e);
+				.catch(() => {
+					onClose();
+					setDisplaySnackbar({
+						message: ContactModalLocale.sendError,
+						status: 'problem',
+					});
 				});
 		};
 		
 		const noErrors = !!formBody.nameInput && !!formBody.emailInput && !!formBody.titleInput && !!formBody.messageInput 
 			&& !errors.nameInput.length && !errors.emailInput.length && !errors.titleInput.length && !errors.messageInput.length;
-
-		console.log(noErrors);
 
 		if (noErrors) {
 			sendMail();
@@ -145,7 +153,6 @@ const ContactModal = ({isOpen, onClose}: ContactModalProps) => {
 				/>
 				<Styles.ButtonContainer>
 					<Button label={ContactModalLocale.sendButtonLabel} />
-					{/* <input type='submit' value='Enviar' /> */}
 				</Styles.ButtonContainer>
 			</Styles.Form>
 		</Modal>

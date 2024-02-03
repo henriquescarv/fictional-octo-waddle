@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import * as Styles from './Navbar.styles';
 import { Locales } from '../../locales/locales.br';
-import NavbarButton from '../NavbarButton/NavbarButton';
-import { FloatMenuOption } from '../NavbarButton/NavbarButton.types';
+import NavbarButton from './components/NavbarButton/NavbarButton';
+import { FloatMenuOption } from './components/NavbarButton/NavbarButton.types';
 import Logo from '../Logo/Logo';
 import BrazilFlagIcon from '../../icons/BrazilFlagIcon/BrazilFlagIcon';
 import UsaFlagIcon from '../../icons/UsaFlagIcon/UsaFlagIcon';

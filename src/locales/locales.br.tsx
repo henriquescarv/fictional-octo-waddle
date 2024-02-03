@@ -20,6 +20,8 @@ export const Locales = {
 			emptyField: 'Preencha este campo',
 			email: 'Digite um email válido',
 		},
+		sendSuccess: 'Mensagem enviada com sucesso! :)',
+		sendError: 'Erro ao enviar mensagem!',
 	},
 
 	home: {

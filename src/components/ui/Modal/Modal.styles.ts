@@ -20,7 +20,7 @@ export const Overlay = styled.div`
   position: fixed;
   top: 0;
   width: 100vw;
-  z-index: 1000;
+  z-index: 2;
 
   @media (max-width: ${defaultTheme.devicesScreen.tablet}) {
     animation: ${toLeftSlide} .2s;

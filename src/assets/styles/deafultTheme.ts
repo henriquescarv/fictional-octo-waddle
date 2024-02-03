@@ -8,6 +8,9 @@ const defaultTheme = {
 		secondary: '#DA44CB',
 		error: '#ff6666',
 
+		snackbarSuccess: '#22BB5F',
+		snackbarProblem: '#DC4242',
+
 		buttonPrimary: '#C778DD33',
 		buttonPrimaryHover: '#C778DD64'
 	},
