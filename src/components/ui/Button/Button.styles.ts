@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 import defaultTheme from '../../../assets/styles/deafultTheme';
 
 interface DefaultButtonProps {
+  width?: number,
   disabled?: boolean,
 }
 
@@ -20,12 +21,16 @@ const SharedButtonStyles = styled.button`
 `;
 
 export const PrimaryButton = styled(SharedButtonStyles)`
-  background: ${defaultTheme.colors.buttonPrimary};
-  display: flex;
+  ${({width, disabled}: DefaultButtonProps) => css`
+    background: ${!disabled ? defaultTheme.colors.buttonPrimary : defaultTheme.colors.gray};
+    display: flex;
+    justify-content: center;
+    width: ${width && width+'px'};
 
-  &:hover {
-    background: ${defaultTheme.colors.buttonPrimaryHover};
-  }
+    &:hover {
+      background: ${!disabled && defaultTheme.colors.buttonPrimaryHover};
+    }
+  `};
 `;
 
 export const SecondaryButton = styled(SharedButtonStyles)`

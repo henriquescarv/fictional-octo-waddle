@@ -1,15 +1,15 @@
-import React, { ChangeEvent, useCallback, useState, useContext } from 'react';
+import React, { useCallback, useState } from 'react';
 import Modal from '../../../../../components/ui/Modal/Modal';
-import { ContactModalProps, FormBodyProps } from './ContactModal.types';
+import { ContactModalProps } from './ContactModal.types';
 import Input from '../../../../../components/ui/Input/Input';
 import { Locales } from '../../../../../locales/locales.br';
 import * as Styles from './ContactModal.styles';
 import Button from '../../../../../components/ui/Button/Button';
-import emailjs from '@emailjs/browser';
 import useValidator from '../../../../../hooks/useValidator/useValidator';
-import { SnackbarContext } from '../../../../../providers/SnackbarProvider/SnackbarProvider';
+import Tooltip from '../../../../../components/ui/Tooltip/Tooltip';
+import useSendContact from '../../../../../hooks/useSendContact/useSendContact';
 
-const fieldsDefault = {
+const errorsDefault = {
 	nameInput: '',
 	emailInput: '',
 	titleInput: '',
@@ -17,99 +17,81 @@ const fieldsDefault = {
 };
 
 const ContactModal = ({isOpen, onClose}: ContactModalProps) => {
-	const [formBody, setFormBody] = useState<FormBodyProps>(fieldsDefault);
-	const [errors, setErrors] = useState<FormBodyProps>(fieldsDefault);
+	const [nameInput, setNameInput] = useState('');
+	const [emailInput, setEmailInput] = useState('');
+	const [titleInput, setTitleInput] = useState('');
+	const [messageInput, setMessageInput] = useState('');
+	const [errors, setErrors] = useState(errorsDefault);
 	// max length pros inputs
-
-	const { setDisplaySnackbar } = useContext(SnackbarContext);
-
-	const { email } = useValidator();
+	
 	const ContactModalLocale = Locales.contactsModal;
-
-	const handleNameInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-		setFormBody({...formBody, nameInput: event.target.value} as FormBodyProps);
-		setErrors({...errors, nameInput: ''});
-	};
-
-	const handleEmailInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-		setFormBody({...formBody, emailInput: event.target.value} as FormBodyProps);
-		setErrors({...errors, emailInput: ''});
-	};
-
-	const handleTitleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-		setFormBody({...formBody, titleInput: event.target.value} as FormBodyProps);
-		setErrors({...errors, titleInput: ''});
-	};
-
-	const handleMessageInputChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
-		setFormBody({...formBody, messageInput: event.target.value} as FormBodyProps);
-		setErrors({...errors, messageInput: ''});
-	};
+	const { email } = useValidator();
+	const { loading: sendMailLoading, sendEmail } = useSendContact();
 
 	const validateEmailInput = () => {
-		if (!(email(formBody.emailInput))) {
+		if (!(email(emailInput))) {
 			setErrors({...errors, emailInput: ContactModalLocale.errors.email});
+		} else {
+			setErrors({...errors, emailInput: ''});
 		}
 	};
+	
+	const validateEmptyField = useCallback((field: string) => {
+		switch (field) {
+		case 'nameInput':
+			if (!nameInput.length) {
+				setErrors({ ...errors, nameInput: ContactModalLocale.errors.emptyField });
+			} else {
+				setErrors({...errors, nameInput: ''});
+			}
+			break;
+		case 'titleInput':
+			if (!titleInput.length) {
+				setErrors({...errors, titleInput: ContactModalLocale.errors.emptyField});
+			} else {
+				setErrors({...errors, titleInput: ''});
+			}
+			break;
+		case 'messageInput':
+			if (!messageInput.length) {
+				setErrors({...errors, messageInput: ContactModalLocale.errors.emptyField});
+			} else {
+				setErrors({...errors, messageInput: ''});
+			}
+			break;
+		default:
+		}
+		console.log(errors);
+	}, [nameInput, titleInput, messageInput, errors]);
 
-	const validateInputs = useCallback(() => {
-		const formErrors = {
-			nameInput: '',
-			emailInput: '',
-			titleInput: '',
-			messageInput: '',
-		};
+	const checkForm = useCallback(() => {
+		let isOk = false;
 
-		if (!(email(formBody.emailInput))) {
-			formErrors.emailInput = ContactModalLocale.errors.email;
-		}
-		if (!formBody.nameInput.length) {
-			formErrors.nameInput = ContactModalLocale.errors.emptyField;
-		}
-		if (!formBody.emailInput.length) {
-			formErrors.emailInput = ContactModalLocale.errors.emptyField;
-		}
-		if (!formBody.titleInput.length) {
-			formErrors.titleInput = ContactModalLocale.errors.emptyField;
-		}
-		if (!formBody.messageInput.length) {
-			formErrors.messageInput = ContactModalLocale.errors.emptyField;
-		}
+		isOk = email(emailInput)
+		&& !!nameInput.length
+		&& !!emailInput.length
+		&& !!titleInput.length
+		&& !!messageInput.length;
 
-		setErrors(formErrors);
-	}, [formBody, formBody.emailInput, errors]);
+		return isOk;
+	}, [nameInput, emailInput, titleInput, messageInput]);
 
 	const onSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
+		Object.keys(errors).filter(key => key !== 'emailInput').map(key => validateEmptyField(key));
 		e.preventDefault();
 
-		validateInputs();
-
-		const sendMail = () => {
+		const sendMail = async () => {
 			const templateParams = {
-				from_name: formBody?.nameInput,
-				from_email: formBody?.emailInput,
-				from_title: formBody?.titleInput,
-				message: formBody?.messageInput,
+				from_name: nameInput,
+				from_email: emailInput,
+				from_title: titleInput,
+				message: messageInput,
 			};
 
-			emailjs.send('service_sotc48h', 'template_2quaj4f', templateParams, 'noSDoE-pcEX5OJzEc')
-				.then(() => {
-					onClose();
-					setDisplaySnackbar({
-						message: ContactModalLocale.sendSuccess,
-						status: 'success',
-					});
-				})
-				.catch(() => {
-					onClose();
-					setDisplaySnackbar({
-						message: ContactModalLocale.sendError,
-						status: 'problem',
-					});
-				});
+			await sendEmail({ templateParams: templateParams, handleExecute: onClose });
 		};
 		
-		const noErrors = !!formBody.nameInput && !!formBody.emailInput && !!formBody.titleInput && !!formBody.messageInput 
+		const noErrors = !!nameInput && !!emailInput && !!titleInput && !!messageInput
 			&& !errors.nameInput.length && !errors.emailInput.length && !errors.titleInput.length && !errors.messageInput.length;
 
 		if (noErrors) {
@@ -125,34 +107,47 @@ const ContactModal = ({isOpen, onClose}: ContactModalProps) => {
 				</Styles.Title>
 				<Styles.UserDataContainer>
 					<Input
-						value={formBody?.nameInput}
+						value={nameInput}
 						placeholder={ContactModalLocale.namePlaceholder}
-						onChange={handleNameInputChange}
+						onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNameInput(e.target.value)}
 						error={errors?.nameInput}
+						onBlur={() => validateEmptyField('nameInput')}
+						maxLength={75}
+						disabled={sendMailLoading}
 					/>
 					<Input
-						value={formBody?.emailInput}
+						value={emailInput}
 						placeholder={ContactModalLocale.emailPlaceholder}
-						onChange={handleEmailInputChange}
+						onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmailInput(e.target.value)}
 						error={errors?.emailInput}
 						onBlur={validateEmailInput}
+						maxLength={80}
+						disabled={sendMailLoading}
 					/>
 				</Styles.UserDataContainer>
 				<Input
-					value={formBody?.titleInput}
+					value={titleInput}
 					placeholder={ContactModalLocale.titlePlaceholder}
-					onChange={handleTitleInputChange}
+					onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTitleInput(e.target.value)}
 					error={errors?.titleInput}
+					onBlur={() => validateEmptyField('titleInput')}
+					maxLength={80}
+					disabled={sendMailLoading}
 				/>
 				<Input
 					type='textarea'
-					value={formBody?.messageInput}
+					value={messageInput}
 					placeholder={ContactModalLocale.messagePlaceholder}
-					onChangeTextarea={handleMessageInputChange}
+					onChangeTextarea={(e: React.ChangeEvent<HTMLTextAreaElement>) => setMessageInput(e.target.value)}
 					error={errors?.messageInput}
+					onBlur={() => validateEmptyField('messageInput')}
+					maxLength={320}
+					disabled={sendMailLoading}
 				/>
 				<Styles.ButtonContainer>
-					<Button label={ContactModalLocale.sendButtonLabel} />
+					<Tooltip message={ContactModalLocale.errors.tooltip} disabled={checkForm()}>
+						<Button label={ContactModalLocale.sendButtonLabel} disabled={!checkForm() || sendMailLoading} loading={sendMailLoading} width={104} />
+					</Tooltip>
 				</Styles.ButtonContainer>
 			</Styles.Form>
 		</Modal>

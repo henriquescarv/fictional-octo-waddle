@@ -2,7 +2,18 @@ import React from 'react';
 import { InputProps } from './Input.types';
 import * as Styles from './Input.styles';
 
-const Input = ({id = 'input', type = 'text', value = '', placeholder = '', error = '', onChange, onChangeTextarea, onBlur}: InputProps) => {
+const Input = ({
+	id = 'input',
+	type = 'text',
+	value = '',
+	placeholder = '',
+	error = '',
+	disabled = false,
+	maxLength,
+	onChange,
+	onChangeTextarea,
+	onBlur
+}: InputProps) => {
 	return (
 		<Styles.Wrapper>
 			{!!value.length && (
@@ -18,6 +29,8 @@ const Input = ({id = 'input', type = 'text', value = '', placeholder = '', error
 					placeholder={placeholder}
 					onChange={onChange}
 					onBlur={onBlur}
+					maxLength={maxLength}
+					disabled={disabled}
 				/>
 			)}
 			{type === 'textarea' && (
@@ -26,6 +39,9 @@ const Input = ({id = 'input', type = 'text', value = '', placeholder = '', error
 					value={value}
 					placeholder={placeholder}
 					onChange={onChangeTextarea}
+					onBlur={onBlur}
+					maxLength={maxLength}
+					disabled={disabled}
 				/>
 			)}
 			{!!error.length && (

@@ -1,13 +1,14 @@
 import React from 'react';
 import { ButtonProps } from './Button.types';
 import * as Styles from './Button.styles';
+import Loading from '../Loading/Loading';
 
-const Button: React.FC<ButtonProps> = ({type = 'primary', label, onClick, disabled = false}: ButtonProps) => {
+const Button: React.FC<ButtonProps> = ({type = 'primary', label, onClick, disabled = false, loading = false, width}: ButtonProps) => {
 	return (
 		<>
 			{(type === 'primary') && (
-				<Styles.PrimaryButton disabled={disabled} onClick={onClick}>
-					{label}
+				<Styles.PrimaryButton disabled={disabled} onClick={onClick} width={width}>
+					{loading ? <Loading /> : label}
 				</Styles.PrimaryButton>
 			)}
 

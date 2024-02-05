@@ -3,6 +3,8 @@ const defaultTheme = {
 		background: '#0F1120',
 		white: '#FFF',
 		gray: '#607B96',
+		lightGray: '#dae1e7',
+		darkGray: '#5f666d',
 		primary: '#41E482',
 		primaryLight: '#B9FFC4',
 		secondary: '#DA44CB',

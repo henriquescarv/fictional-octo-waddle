@@ -17,6 +17,7 @@ export const Locales = {
 		messagePlaceholder: 'Mensagem',
 		sendButtonLabel: 'Enviar',
 		errors: {
+			tooltip: 'Preencha corretamente os campos',
 			emptyField: 'Preencha este campo',
 			email: 'Digite um email válido',
 		},

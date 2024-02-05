@@ -4,7 +4,7 @@ import defaultTheme from '../../assets/styles/deafultTheme';
 export const Wrapper = styled.div`
 `;
 
-export const Header = styled.header`
+export const Header = styled.nav`
   background: ${defaultTheme.colors.background};
   min-height: 64px;
   position: fixed;

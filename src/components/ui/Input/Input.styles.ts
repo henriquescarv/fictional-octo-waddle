@@ -19,6 +19,15 @@ export const Input = styled.input`
     color: ${defaultTheme.colors.gray};
     font-size: 16px;
   }
+
+  &:disabled {
+    border: 1px solid ${defaultTheme.colors.darkGray};
+    color: ${defaultTheme.colors.darkGray};
+
+    ::placeholder {
+      color: ${defaultTheme.colors.darkGray};
+    }
+  }
 `;
 
 export const InputTitleWrapper = styled.div`
@@ -48,6 +57,15 @@ export const Textarea = styled.textarea`
   ::placeholder {
     color: ${defaultTheme.colors.gray};
     font-size: 16px;
+  }
+
+  &:disabled {
+    border: 1px solid ${defaultTheme.colors.darkGray};
+    color: ${defaultTheme.colors.darkGray};
+
+    ::placeholder {
+      color: ${defaultTheme.colors.darkGray};
+    }
   }
 `;
 

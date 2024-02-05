@@ -9,15 +9,10 @@ import UsaFlagIcon from '../../icons/UsaFlagIcon/UsaFlagIcon';
 import HalfBurguerIcon from '../../icons/HalfBurguerIcon/HalfBurguerIcon';
 import defaultTheme from '../../assets/styles/deafultTheme';
 import Button from '../ui/Button/Button';
-import useLocale from '../../hooks/useLocale/useLocale';
 import CloseIcon from '../../icons/CloseIcon/CloseIcon';
 
 const Navbar = () => {
 	const [showOptionsModal, setShowOptionsModal] = useState(false);
-
-	const newLocale = useLocale.getLocale();
-	
-	console.log(newLocale);
 
 	const floatMenuOptions: FloatMenuOption[] = [
 		{
