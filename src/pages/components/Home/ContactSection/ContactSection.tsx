@@ -1,11 +1,12 @@
-import React from 'react';
-import { Locales } from '../../../../locales/locales.br';
+import React, { useContext } from 'react';
 import Section from '../components/Section/Section';
 import * as Styles from './ContactSection.styles';
 import { ContactSectionProps } from './ContactSection.types';
+import { LocaleContext } from '../../../../providers/LocaleProvider/LocaleProvider';
 
 const ContactSection = ({showContactModal, setShowContactModal}: ContactSectionProps) => {
-	const contactLocale = Locales.home.contactSection;
+	const { locale } = useContext(LocaleContext);
+	const contactLocale = locale.home.contactSection;
 
 	const handleContactMe = () => {
 		setShowContactModal(!showContactModal);

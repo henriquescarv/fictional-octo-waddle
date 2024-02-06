@@ -1,14 +1,15 @@
 import { useContext, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { SnackbarContext } from '../../providers/SnackbarProvider/SnackbarProvider';
-import { Locales } from '../../locales/locales.br';
 import { sendEmailProps } from './useSendContact.types';
+import { LocaleContext } from '../../providers/LocaleProvider/LocaleProvider';
 
 const useSendContact = () => {
 	const [loading, setLoading] = useState(false);
 	const { setDisplaySnackbar } = useContext(SnackbarContext);
 
-	const ContactModalLocale = Locales.contactsModal;
+	const { locale } = useContext(LocaleContext);
+	const ContactModalLocale = locale.contactsModal;
 
 	const sendEmail = ({ templateParams, handleExecute }: sendEmailProps) => {
 		setLoading(true);

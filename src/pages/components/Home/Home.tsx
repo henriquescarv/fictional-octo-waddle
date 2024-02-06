@@ -1,6 +1,5 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import * as Styles from './Home.styles';
-import { Locales } from '../../../locales/locales.br';
 import Button from '../../../components/ui/Button/Button';
 import Dots from '../../../elements/Dots/Dots';
 import { ButtonProps, ButtonVariants } from '../../../components/ui/Button/Button.types';
@@ -11,12 +10,13 @@ import { ReactTypical } from '@deadcoder0904/react-typical';
 import ProjectsSection from './ProjectsSection/ProjectsSection';
 import ContactSection from './ContactSection/ContactSection';
 import AboutSection from './AboutSection/AboutSection';
+import { LocaleContext } from '../../../providers/LocaleProvider/LocaleProvider';
 
 const Home = () => {
 	const [swipeUpVisible, setSwipeUpVisible] = useState(false);
 	const [showContactModal, setShowContactModal] = useState(false);
-
-	const homeLocale = Locales.home;
+	const { locale } = useContext(LocaleContext);
+	const homeLocale = locale.home;
 
 	const linkedinButtonProps = () => {
 		const handleClickLinkedin = () => {
@@ -79,6 +79,16 @@ const Home = () => {
 		};
 	}, []);
 
+	const titlePageContent = useCallback(() => {
+		const steps = [homeLocale.devFrontLabel, 500];
+
+		return (
+			<Styles.TitleContainer>
+				<ReactTypical steps={steps} loop={1} wrapper='h1' />
+			</Styles.TitleContainer>
+		);
+	}, [homeLocale]);
+
 	return (
 		<Styles.Wrapper>
 			<Styles.ScrollUpContainer visible={swipeUpVisible}>
@@ -92,9 +102,7 @@ const Home = () => {
 								<Styles.AngleBracket>
 									{homeLocale.chaveLabel}
 								</Styles.AngleBracket>
-								<Styles.TitleContainer>
-									<ReactTypical steps={[homeLocale.devFrontLabel, 500]} loop={Infinity} wrapper='h1' />
-								</Styles.TitleContainer>
+								{titlePageContent()}
 							</Styles.TitleBox>
 							<Styles.SubTitle>{homeLocale.helloLabel}</Styles.SubTitle>
 						</Styles.TitleWrapper>

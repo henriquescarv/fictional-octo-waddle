@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
+import React, { useCallback, useContext, useState } from 'react';
 import * as Styles from './Navbar.styles';
-import { Locales } from '../../locales/locales.br';
 import NavbarButton from './components/NavbarButton/NavbarButton';
-import { FloatMenuOption } from './components/NavbarButton/NavbarButton.types';
 import Logo from '../Logo/Logo';
 import BrazilFlagIcon from '../../icons/BrazilFlagIcon/BrazilFlagIcon';
 import UsaFlagIcon from '../../icons/UsaFlagIcon/UsaFlagIcon';
@@ -10,22 +8,13 @@ import HalfBurguerIcon from '../../icons/HalfBurguerIcon/HalfBurguerIcon';
 import defaultTheme from '../../assets/styles/deafultTheme';
 import Button from '../ui/Button/Button';
 import CloseIcon from '../../icons/CloseIcon/CloseIcon';
+import { LocaleContext } from '../../providers/LocaleProvider/LocaleProvider';
 
 const Navbar = () => {
 	const [showOptionsModal, setShowOptionsModal] = useState(false);
+	const { language, setLanguage } = useContext(LocaleContext);
 
-	const floatMenuOptions: FloatMenuOption[] = [
-		{
-			id: 'brazil',
-			label: <BrazilFlagIcon />,
-			handleClick: () => null,
-		},
-		{
-			id: 'usa',
-			label: <UsaFlagIcon />,
-			handleClick: () => null,
-		},
-	];
+	const { locale } = useContext(LocaleContext);
 
 	const handleSwipeUp = () => {
 		window.scrollTo(0, 0);
@@ -38,12 +27,39 @@ const Navbar = () => {
 
 	const mountNavbarButtons = () => (
 		<>
-			<NavbarButton text={Locales.navbar.homeButton} onClick={() => handleChangeSectionClick('#home')} />
-			<NavbarButton text={Locales.navbar.projectsButton} onClick={() => handleChangeSectionClick('#projects')} />
-			<NavbarButton text={Locales.navbar.aboutMeButton} onClick={() => handleChangeSectionClick('#about-me')} />
-			<NavbarButton text={Locales.navbar.contactsButton} onClick={() => handleChangeSectionClick('#contact')} />
+			<NavbarButton text={locale.navbar.homeButton} onClick={() => handleChangeSectionClick('#home')} />
+			<NavbarButton text={locale.navbar.projectsButton} onClick={() => handleChangeSectionClick('#projects')} />
+			<NavbarButton text={locale.navbar.aboutMeButton} onClick={() => handleChangeSectionClick('#about-me')} />
+			<NavbarButton text={locale.navbar.contactsButton} onClick={() => handleChangeSectionClick('#contact')} />
 		</>
 	);
+
+	const brandButtonProps = useCallback(() => {
+		const children = (
+			<>
+				{language === 'en' && (
+					<BrazilFlagIcon />
+				)}
+				{language === 'br' && (
+					<UsaFlagIcon />
+				)}
+			</>
+		);
+
+		const onClick = () => {
+			if (language === 'br') {
+				setLanguage('en');
+			}
+			if (language === 'en') {
+				setLanguage('br');
+			}
+		};
+	
+		return {
+			children,
+			onClick,
+		};
+	}, [language]);
 
 	return (
 		<Styles.Header>
@@ -53,7 +69,7 @@ const Navbar = () => {
 				</Styles.LogoButton>
 				<Styles.ButtonsContainer>
 					{mountNavbarButtons()}
-					<NavbarButton listOptions={floatMenuOptions} selectedOptionDefault={floatMenuOptions[1]} />
+					<Styles.BrandButton {...brandButtonProps()} />
 				</Styles.ButtonsContainer>
 				<Styles.MobileSideMenu>
 					<Button type='text' label={<HalfBurguerIcon size='lg' color={defaultTheme.colors.primary} />} onClick={()  => setShowOptionsModal(!showOptionsModal)}  />
@@ -73,7 +89,7 @@ const Navbar = () => {
 							{mountNavbarButtons()}
 						</Styles.MobileNavbarButtons>
 						<Styles.LocaleMobileWrapper>
-							<NavbarButton listOptions={floatMenuOptions} selectedOptionDefault={floatMenuOptions[1]} />
+							<Styles.BrandButton {...brandButtonProps()} />
 						</Styles.LocaleMobileWrapper>
 					</Styles.MobileButtonsContainer>
 				</Styles.ModalWrapper>

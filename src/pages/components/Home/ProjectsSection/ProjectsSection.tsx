@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import ProjectsCard from '../components/ProjectsCard/ProjectsCard';
 import projects from '../../../../data/projetcs';
-import { Locales } from '../../../../locales/locales.br';
 import HorizontalArrow from '../../../../icons/HorizontalArrow/HorizontalArrow';
 import { ButtonProps } from '../../../../components/ui/Button/Button.types';
 import Section from '../components/Section/Section';
+import { LocaleContext } from '../../../../providers/LocaleProvider/LocaleProvider';
 
 const ProjectsSection = () => {
-	const projectsLocale = Locales.home.projectsSection;
+	const { locale } = useContext(LocaleContext);
+	const projectsLocale = locale.home.projectsSection;
 
 	const seeMoreButton = () => {
 		const seeMoreButtonLabel = (

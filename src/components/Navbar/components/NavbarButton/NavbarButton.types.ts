@@ -8,7 +8,5 @@ export type FloatMenuOption = {
 
 export type NavbarButtonProps = {
   text?: string,
-  selectedOptionDefault?: FloatMenuOption,
-  listOptions?: FloatMenuOption[],
   onClick?: () => void;
 };

@@ -1,28 +1,12 @@
 import React from 'react';
 import Button from '../components/ui/Button/Button';
 
-export const Locales = {
+const Locales = {
 	navbar: {
 		homeButton: 'home',
 		projectsButton: 'projetos',
 		aboutMeButton: 'sobre-mim',
 		contactsButton: 'contatos',
-	},
-
-	contactsModal: {
-		title: 'Envie uma mensagem :)',
-		namePlaceholder: 'Nome',
-		emailPlaceholder: 'E-mail',
-		titlePlaceholder: 'Título',
-		messagePlaceholder: 'Mensagem',
-		sendButtonLabel: 'Enviar',
-		errors: {
-			tooltip: 'Preencha corretamente os campos',
-			emptyField: 'Preencha este campo',
-			email: 'Digite um email válido',
-		},
-		sendSuccess: 'Mensagem enviada com sucesso! :)',
-		sendError: 'Erro ao enviar mensagem!',
 	},
 
 	home: {
@@ -45,10 +29,9 @@ export const Locales = {
 		projectsSection: {
 			title: 'projetos',
 			seeMoreButton: 'Ver tudo',
-			seeProjectButton: 'ver-projeto',
+			seeProjectButton: 'repositório',
 		},
 		aboutSection: {
-			seeProjectButton: 'ver-projeto',
 			title: 'sobre-mim',
 			description: (
 				<>
@@ -78,9 +61,27 @@ export const Locales = {
 
 	contacts: {},
 
+	contactsModal: {
+		title: 'Envie uma mensagem :)',
+		namePlaceholder: 'Nome',
+		emailPlaceholder: 'E-mail',
+		titlePlaceholder: 'Título',
+		messagePlaceholder: 'Mensagem',
+		sendButtonLabel: 'Enviar',
+		errors: {
+			tooltip: 'Preencha corretamente os campos',
+			emptyField: 'Preencha este campo',
+			email: 'Digite um e-mail válido',
+		},
+		sendSuccess: 'Mensagem enviada com sucesso! :)',
+		sendError: 'Erro ao enviar mensagem!',
+	},
+
 	footer: {
 		devFrontLabel: 'Desenvolvedor Front-end',
 		media: 'Redes',
 		copyright: '© Copyright 2022. Feito por Herique Carvalho',
 	},
 };
+
+export default Locales;

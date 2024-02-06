@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import * as Styles from './Footer.styles';
 import Logo from '../Logo/Logo';
-import { Locales } from '../../locales/locales.br';
 import Button from '../ui/Button/Button';
 import { ButtonVariants } from '../ui/Button/Button.types';
 import LinkedinIcon from '../../icons/LinkedinIcon/LinkedinIcon';
 import GithubIcon from '../../icons/GithubIcon/GithubIcon';
+import { LocaleContext } from '../../providers/LocaleProvider/LocaleProvider';
 
 const Footer = () => {
+	const { locale } = useContext(LocaleContext);
+
 	const linkedinButtonProps = () => ({
 		label: <LinkedinIcon size='lg' />,
 		onClick: () => window.open('https://www.linkedin.com/in/henrique-carvalho-475937216/'),
@@ -32,10 +34,10 @@ const Footer = () => {
 						<Styles.LogoButton onClick={handleSwipeUp}>
 							<Logo size='sm' />
 						</Styles.LogoButton>
-						{Locales.footer.devFrontLabel}
+						{locale.footer.devFrontLabel}
 					</Styles.LeftContainer>
 					<Styles.MediaContainer>
-						<Styles.MediaTitle>{Locales.footer.media}</Styles.MediaTitle>
+						<Styles.MediaTitle>{locale.footer.media}</Styles.MediaTitle>
 						<Styles.MediaButtonsContainer>
 							<Button {...linkedinButtonProps()} />
 							<Button {...githubButtonProps()} />
@@ -43,7 +45,7 @@ const Footer = () => {
 					</Styles.MediaContainer>
 				</Styles.TopContainer>
 				<Styles.CopyrightContainer>
-					{Locales.footer.copyright}
+					{locale.footer.copyright}
 				</Styles.CopyrightContainer>
 			</Styles.Footer>
 		</Styles.FooterContainer>

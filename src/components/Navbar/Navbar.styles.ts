@@ -151,3 +151,21 @@ export const MobileNavbarButtons = styled.div`
   gap: 32px;
   margin-top: 40px;
 `;
+
+export const BrandButton = styled.button`
+  background: transparent;
+  border: none;
+  display: flex;
+  cursor: pointer;
+
+  svg {
+    fill: ${defaultTheme.colors.gray};
+    transition: fill 0.2s;
+  }
+
+  &:hover {
+    svg {
+      fill: ${defaultTheme.colors.white};
+    }
+  }
+`;

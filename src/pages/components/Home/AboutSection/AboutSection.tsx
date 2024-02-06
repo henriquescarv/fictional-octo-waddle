@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Section from '../components/Section/Section';
 import { ButtonProps } from '../../../../components/ui/Button/Button.types';
 import HorizontalArrow from '../../../../icons/HorizontalArrow/HorizontalArrow';
-import { Locales } from '../../../../locales/locales.br';
 import skills from '../../../../data/skils';
 import Accordion from '../../../../components/ui/Accordion/Accordion';
 import Card from '../../../../components/ui/Card/Card';
@@ -10,11 +9,13 @@ import DownloadIcon from '../../../../icons/DownloadIcon/DownloadIcon';
 import defaultTheme from '../../../../assets/styles/deafultTheme';
 import Button from '../../../../components/ui/Button/Button';
 import * as Styles from './AboutSection.styles';
+import { LocaleContext } from '../../../../providers/LocaleProvider/LocaleProvider';
 
 const AboutSection = () => {
 	const [accordionOpen, setAccordionOpen] = useState(true);
 
-	const aboutLocale = Locales.home.aboutSection;
+	const { locale } = useContext(LocaleContext);
+	const aboutLocale = locale.home.aboutSection;
 
 	const seeMoreButton = () => {
 		const seeMoreButtonLabel = (
@@ -35,7 +36,7 @@ const AboutSection = () => {
 
 	const cvButtonLabel = () => (
 		<>
-			{Locales.home.cvButtonLabel}
+			{locale.home.cvButtonLabel}
 			<DownloadIcon size='md' color={defaultTheme.colors.white} />
 		</>
 	);

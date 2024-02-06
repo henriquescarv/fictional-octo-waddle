@@ -1,13 +1,13 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useContext, useState } from 'react';
 import Modal from '../../../../../components/ui/Modal/Modal';
 import { ContactModalProps } from './ContactModal.types';
 import Input from '../../../../../components/ui/Input/Input';
-import { Locales } from '../../../../../locales/locales.br';
 import * as Styles from './ContactModal.styles';
 import Button from '../../../../../components/ui/Button/Button';
 import useValidator from '../../../../../hooks/useValidator/useValidator';
 import Tooltip from '../../../../../components/ui/Tooltip/Tooltip';
 import useSendContact from '../../../../../hooks/useSendContact/useSendContact';
+import { LocaleContext } from '../../../../../providers/LocaleProvider/LocaleProvider';
 
 const errorsDefault = {
 	nameInput: '',
@@ -22,9 +22,10 @@ const ContactModal = ({isOpen, onClose}: ContactModalProps) => {
 	const [titleInput, setTitleInput] = useState('');
 	const [messageInput, setMessageInput] = useState('');
 	const [errors, setErrors] = useState(errorsDefault);
-	// max length pros inputs
 	
-	const ContactModalLocale = Locales.contactsModal;
+	const { locale } = useContext(LocaleContext);
+	const ContactModalLocale = locale.contactsModal;
+
 	const { email } = useValidator();
 	const { loading: sendMailLoading, sendEmail } = useSendContact();
 
