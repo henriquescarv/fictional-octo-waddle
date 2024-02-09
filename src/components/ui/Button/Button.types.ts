@@ -6,5 +6,6 @@ export type ButtonProps = {
   disabled?: boolean,
   loading?: boolean,
   width?: number,
+  fullWidth?: boolean,
   onClick?: () => void,
 };

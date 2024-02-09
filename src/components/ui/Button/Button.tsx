@@ -3,7 +3,7 @@ import { ButtonProps } from './Button.types';
 import * as Styles from './Button.styles';
 import Loading from '../Loading/Loading';
 
-const Button: React.FC<ButtonProps> = ({type = 'primary', label, onClick, disabled = false, loading = false, width}: ButtonProps) => {
+const Button: React.FC<ButtonProps> = ({type = 'primary', label, onClick, disabled = false, loading = false, width, fullWidth = false}: ButtonProps) => {
 	return (
 		<>
 			{(type === 'primary') && (
@@ -13,13 +13,13 @@ const Button: React.FC<ButtonProps> = ({type = 'primary', label, onClick, disabl
 			)}
 
 			{(type === 'submit') && (
-				<Styles.PrimaryButton disabled={disabled} type={type}>
+				<Styles.PrimaryButton disabled={disabled} type={type} fullWidth={fullWidth}>
 					{label}
 				</Styles.PrimaryButton>
 			)}
 
 			{type === 'secondary' && (
-				<Styles.SecondaryButton disabled={disabled} onClick={onClick}>
+				<Styles.SecondaryButton disabled={disabled} onClick={onClick} fullWidth={fullWidth}>
 					{label}
 				</Styles.SecondaryButton>
 			)}

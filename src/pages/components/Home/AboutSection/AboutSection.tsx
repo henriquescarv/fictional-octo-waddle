@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import Section from '../components/Section/Section';
-import { ButtonProps } from '../../../../components/ui/Button/Button.types';
-import HorizontalArrow from '../../../../icons/HorizontalArrow/HorizontalArrow';
+// import { ButtonProps } from '../../../../components/ui/Button/Button.types';
+// import HorizontalArrow from '../../../../icons/HorizontalArrow/HorizontalArrow';
 import skills from '../../../../data/skils';
 import Accordion from '../../../../components/ui/Accordion/Accordion';
 import Card from '../../../../components/ui/Card/Card';
@@ -11,28 +11,30 @@ import Button from '../../../../components/ui/Button/Button';
 import * as Styles from './AboutSection.styles';
 import { LocaleContext } from '../../../../providers/LocaleProvider/LocaleProvider';
 
+// all those comments will be 'uncomment' when the about-me page is built
+
 const AboutSection = () => {
 	const [accordionOpen, setAccordionOpen] = useState(true);
 
 	const { locale } = useContext(LocaleContext);
 	const aboutLocale = locale.home.aboutSection;
 
-	const seeMoreButton = () => {
-		const seeMoreButtonLabel = (
-			<>
-				{aboutLocale.seeMoreButton}
-				<HorizontalArrow />
-			</>
-		);
+	// const seeMoreButton = () => {
+	// 	const seeMoreButtonLabel = (
+	// 		<>
+	// 			{aboutLocale.seeMoreButton}
+	// 			<HorizontalArrow />
+	// 		</>
+	// 	);
 
-		const handleClick = () => {}; // leva para a página de sobre mim
+	// 	const handleClick = () => {}; // leva para a página de sobre mim
 
-		return {
-			type: 'text',
-			label: seeMoreButtonLabel,
-			onClick: handleClick,
-		};
-	};
+	// 	return {
+	// 		type: 'text',
+	// 		label: seeMoreButtonLabel,
+	// 		onClick: handleClick,
+	// 	};
+	// };
 
 	const cvButtonLabel = () => (
 		<>
@@ -103,7 +105,7 @@ const AboutSection = () => {
 			title={aboutLocale.title}
 			sectionId={'about-me'}
 			content={mountAboutContent}
-			rightButton={seeMoreButton() as ButtonProps}
+			// rightButton={seeMoreButton() as ButtonProps}
 		/>
 	);
 };

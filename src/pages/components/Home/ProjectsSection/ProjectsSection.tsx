@@ -1,37 +1,41 @@
 import React, { useContext } from 'react';
 import ProjectsCard from '../components/ProjectsCard/ProjectsCard';
 import projects from '../../../../data/projetcs';
-import HorizontalArrow from '../../../../icons/HorizontalArrow/HorizontalArrow';
-import { ButtonProps } from '../../../../components/ui/Button/Button.types';
+// import HorizontalArrow from '../../../../icons/HorizontalArrow/HorizontalArrow';
+// import { ButtonProps } from '../../../../components/ui/Button/Button.types';
 import Section from '../components/Section/Section';
 import { LocaleContext } from '../../../../providers/LocaleProvider/LocaleProvider';
+import * as Styles from './ProjectsSection.styles';
+
+// all those comments will be 'uncomment' when the projects page is built
 
 const ProjectsSection = () => {
-	const { locale } = useContext(LocaleContext);
+	const { language, locale } = useContext(LocaleContext);
 	const projectsLocale = locale.home.projectsSection;
 
-	const seeMoreButton = () => {
-		const seeMoreButtonLabel = (
-			<>
-				{projectsLocale.seeMoreButton}
-				<HorizontalArrow />
-			</>
-		);
+	// const seeMoreButton = () => {
+	// 	const seeMoreButtonLabel = (
+	// 		<>
+	// 			{projectsLocale.seeMoreButton}
+	// 			<HorizontalArrow />
+	// 		</>
+	// 	);
 
-		const handleClick = () => {}; // leva para a página de projetos
+	// 	const handleClick = () => {}; // leva para a página de projetos
 
-		return {
-			type: 'text',
-			label: seeMoreButtonLabel,
-			onClick: handleClick,
-		};
-	};
+	// 	return {
+	// 		type: 'text',
+	// 		label: seeMoreButtonLabel,
+	// 		onClick: handleClick,
+	// 	};
+	// };
 
 	const mountContent = () => {
 		const defaultButtonProps = (buttonUrl: string, type?: 'primary' | 'secondary' | 'text') => ({
 			type,
-			label: projectsLocale.seeProjectButton,
+			label: type === 'secondary' ? projectsLocale.deployButton : projectsLocale.seeProjectButton,
 			onClick: () => window.open(buttonUrl),
+			fullWidth: true,
 		});
 
 		return (
@@ -40,12 +44,14 @@ const ProjectsSection = () => {
 					<ProjectsCard
 						title={project.title}
 						key={project.title}
-						imageUrl={project.imageUrl}
+						imageUrl={project.imageSrc}
 						imageAlt={project.imageAlt}
-						description={project.description}
+						description={project.description[language]}
 						button={defaultButtonProps(project.projectUrl)}
+						secondButton={project.deployUrl.length ? defaultButtonProps(project.deployUrl, 'secondary') : undefined}
 					/>
 				))}
+				{projects.length < 3 && <Styles.EmptyProject>{projectsLocale.soonLabel}</Styles.EmptyProject>}
 			</>
 		);
 	};
@@ -55,7 +61,7 @@ const ProjectsSection = () => {
 			title= {projectsLocale.title}
 			sectionId= {'projects'}
 			content= {mountContent()}
-			rightButton= {seeMoreButton() as ButtonProps}
+			// rightButton= {seeMoreButton() as ButtonProps}
 		/>
 	);
 };

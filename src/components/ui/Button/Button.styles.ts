@@ -4,10 +4,11 @@ import defaultTheme from '../../../assets/styles/deafultTheme';
 interface DefaultButtonProps {
   width?: number,
   disabled?: boolean,
+  fullWidth?: boolean,
 }
 
 const SharedButtonStyles = styled.button`
-  ${({disabled=false}: DefaultButtonProps) => css`
+  ${({disabled=false, fullWidth=false}: DefaultButtonProps) => css`
     all: unset;
     align-items: center;
     border-radius: 8px;
@@ -17,6 +18,7 @@ const SharedButtonStyles = styled.button`
     padding: 8px 16px;
     transition: .2s;
     user-select: none;
+    width: ${fullWidth && '100%'};
   `};
 `;
 
@@ -25,7 +27,7 @@ export const PrimaryButton = styled(SharedButtonStyles)`
     background: ${!disabled ? defaultTheme.colors.buttonPrimary : defaultTheme.colors.gray};
     display: flex;
     justify-content: center;
-    width: ${width && width+'px'};
+    width: ${width && width + 'px'};
 
     &:hover {
       background: ${!disabled && defaultTheme.colors.buttonPrimaryHover};
@@ -36,6 +38,7 @@ export const PrimaryButton = styled(SharedButtonStyles)`
 export const SecondaryButton = styled(SharedButtonStyles)`
   border: 1px solid ${defaultTheme.colors.secondary};
   display: flex;
+  justify-content: center;
 
   &:hover {
     background: ${defaultTheme.colors.buttonPrimary};

@@ -30,6 +30,8 @@ const Locales = {
 			title: 'projetos',
 			seeMoreButton: 'Ver tudo',
 			seeProjectButton: 'repositório',
+			deployButton: 'deploy',
+			soonLabel: 'Em breve...'
 		},
 		aboutSection: {
 			title: 'sobre-mim',
