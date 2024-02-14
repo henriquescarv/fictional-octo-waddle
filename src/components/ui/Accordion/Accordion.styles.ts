@@ -3,14 +3,16 @@ import styled, { css } from 'styled-components';
 export const Head = styled.div``;
 
 interface ExpansiveContentProps {
-  height: number | null,
+  isOpen: boolean,
+  minHeight?: number,
 }
 
-export const ExpansiveContent = styled.ul`
-  ${({height = 264}: ExpansiveContentProps) => css`
-    height: ${height}px;
-    opacity: ${height ? 1 : 0};
-    transition: 0.1s ease-in-out;
+export const ExpansiveContent = styled.div`
+  ${({isOpen = false, minHeight}: ExpansiveContentProps) => css`
+    height: ${!isOpen ? 0 : `${minHeight}px` || 'fit-content'};
+    opacity: ${isOpen ? 1 : 0};
+    overflow: hidden;
+    transition: .2s ease-in-out;
   `};
 `;
 

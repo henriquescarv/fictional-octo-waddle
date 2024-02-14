@@ -47,17 +47,11 @@ export const SkillsCardList = styled.ul`
   padding: 16px 16px 8px 16px;
 `;
 
-interface SkillsCardExpansiveListProps {
-  isOpen?: boolean,
-}
-
 export const SkillsCardExpansiveList = styled.div`
-  ${({isOpen}: SkillsCardExpansiveListProps) => css`
-    display: ${isOpen ? 'flex' : 'none'};
-    flex-direction: column;
-    gap: 8px;
-    padding: 0 16px;
-  `};
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 16px;
 `;
 
 interface SkillProps {
@@ -66,9 +60,10 @@ interface SkillProps {
 
 export const Skill = styled.li`
   ${({open = true}: SkillProps) => css`
-    display: ${open ? 'flex' : 'none'};
     align-items: center;
+    display: ${open ? 'flex' : 'none'};
     gap: 8px;
+    height: 40px;
     list-style: none;
   `};
 `;

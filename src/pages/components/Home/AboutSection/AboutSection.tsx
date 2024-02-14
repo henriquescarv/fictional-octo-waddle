@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useRef } from 'react';
 import Section from '../components/Section/Section';
 // import { ButtonProps } from '../../../../components/ui/Button/Button.types';
 // import HorizontalArrow from '../../../../icons/HorizontalArrow/HorizontalArrow';
@@ -14,7 +14,9 @@ import { LocaleContext } from '../../../../providers/LocaleProvider/LocaleProvid
 // all those comments will be 'uncomment' when the about-me page is built
 
 const AboutSection = () => {
-	const [accordionOpen, setAccordionOpen] = useState(true);
+	const [accordionOpen, setAccordionOpen] = useState(false);
+
+	const accordionRef = useRef<HTMLUListElement>(null);
 
 	const { locale } = useContext(LocaleContext);
 	const aboutLocale = locale.home.aboutSection;
@@ -55,7 +57,7 @@ const AboutSection = () => {
 
 	const skillsAccordionProps = () => {
 		const head = (
-			<Styles.SkillsCardList>
+			<Styles.SkillsCardList ref={accordionRef}>
 				{skills.slice(0, 5).map((skill, index) => (
 					<Styles.Skill key={index}>
 						<Styles.LogoImage src={skill.imageUrl} />
@@ -66,7 +68,7 @@ const AboutSection = () => {
 		);
 
 		const content = (
-			<Styles.SkillsCardExpansiveList isOpen={accordionOpen}>
+			<Styles.SkillsCardExpansiveList>
 				{skills.slice(5, skills.length).map((skill, index) => (
 					<Styles.Skill key={index} open>
 						<Styles.LogoImage src={skill.imageUrl} />
@@ -76,10 +78,13 @@ const AboutSection = () => {
 			</Styles.SkillsCardExpansiveList>
 		);
 
+		const accordionMinHeight = accordionRef.current && accordionRef.current.scrollHeight || undefined;
+
 		return {
 			head,
 			content,
 			defaultOpen: accordionOpen,
+			minHeight: accordionMinHeight,
 			onClickOpen: setAccordionOpen,
 		};
 	};
