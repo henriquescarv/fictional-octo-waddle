@@ -1,34 +1,38 @@
 import React, { useContext } from 'react';
 import ProjectsCard from '../components/ProjectsCard/ProjectsCard';
-import projects from '../../../../data/projetcs';
+import projects from '../../../data/projetcs';
 // import HorizontalArrow from '../../../../icons/HorizontalArrow/HorizontalArrow';
 // import { ButtonProps } from '../../../../components/ui/Button/Button.types';
 import Section from '../components/Section/Section';
-import { LocaleContext } from '../../../../providers/LocaleProvider/LocaleProvider';
+import { LocaleContext } from '../../../providers/LocaleProvider/LocaleProvider';
 import * as Styles from './ProjectsSection.styles';
+import HorizontalArrow from '../../../icons/HorizontalArrow/HorizontalArrow';
+import { useNavigate } from 'react-router-dom';
+import { ButtonProps } from '../../../components/ui/Button/Button.types';
 
 // all those comments will be 'uncomment' when the projects page is built
 
 const ProjectsSection = () => {
 	const { language, locale } = useContext(LocaleContext);
+	const navigate = useNavigate();
 	const projectsLocale = locale.home.projectsSection;
 
-	// const seeMoreButton = () => {
-	// 	const seeMoreButtonLabel = (
-	// 		<>
-	// 			{projectsLocale.seeMoreButton}
-	// 			<HorizontalArrow />
-	// 		</>
-	// 	);
+	const seeMoreButton = () => {
+		const seeMoreButtonLabel = (
+			<>
+				{projectsLocale.seeMoreButton}
+				<HorizontalArrow />
+			</>
+		);
 
-	// 	const handleClick = () => {}; // leva para a página de projetos
+		const handleClick = () => { navigate('/projects'); }; // leva para a página de projetos
 
-	// 	return {
-	// 		type: 'text',
-	// 		label: seeMoreButtonLabel,
-	// 		onClick: handleClick,
-	// 	};
-	// };
+		return {
+			type: 'text',
+			label: seeMoreButtonLabel,
+			onClick: handleClick,
+		};
+	};
 
 	const mountContent = () => {
 		const defaultButtonProps = (buttonUrl: string, type?: 'primary' | 'secondary' | 'text') => ({
@@ -40,7 +44,7 @@ const ProjectsSection = () => {
 
 		return (
 			<>
-				{projects.map(project => (
+				{projects.slice(0, 3).map(project => (
 					<ProjectsCard
 						title={project.title}
 						key={project.title}
@@ -61,7 +65,7 @@ const ProjectsSection = () => {
 			title= {projectsLocale.title}
 			sectionId= {'projects'}
 			content= {mountContent()}
-			// rightButton= {seeMoreButton() as ButtonProps}
+			rightButton= {seeMoreButton() as ButtonProps}
 		/>
 	);
 };

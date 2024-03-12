@@ -57,7 +57,9 @@ const Locales = {
 		},
 	},
 
-	projects: {},
+	projects: {
+		title: 'projetos',
+	},
 
 	aboutMe: {},
 

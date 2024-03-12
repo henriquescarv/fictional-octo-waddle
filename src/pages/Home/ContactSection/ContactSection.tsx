@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import Section from '../components/Section/Section';
 import * as Styles from './ContactSection.styles';
 import { ContactSectionProps } from './ContactSection.types';
-import { LocaleContext } from '../../../../providers/LocaleProvider/LocaleProvider';
+import { LocaleContext } from '../../../providers/LocaleProvider/LocaleProvider';
 
 const ContactSection = ({showContactModal, setShowContactModal}: ContactSectionProps) => {
 	const { locale } = useContext(LocaleContext);

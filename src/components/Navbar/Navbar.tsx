@@ -9,9 +9,12 @@ import defaultTheme from '../../assets/styles/deafultTheme';
 import Button from '../ui/Button/Button';
 import CloseIcon from '../../icons/CloseIcon/CloseIcon';
 import { LocaleContext } from '../../providers/LocaleProvider/LocaleProvider';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
 	const [showOptionsModal, setShowOptionsModal] = useState(false);
+	const location = useLocation();
+	const navigate = useNavigate();
 	const { language, setLanguage } = useContext(LocaleContext);
 
 	const { locale } = useContext(LocaleContext);
@@ -20,8 +23,16 @@ const Navbar = () => {
 		window.scrollTo(0, 0);
 	};
 
+	const handleClickLogo = () => {
+		location.pathname === '/'
+			? handleSwipeUp()
+			: navigate('/');
+	};
+
 	const handleChangeSectionClick = (sectionId: string) => {
-		window.location.href = sectionId;
+		location.pathname === '/' || location.pathname.includes('#')
+			? window.location.href = sectionId
+			: window.location.href = `..${sectionId}`;
 		setShowOptionsModal(false);
 	};
 
@@ -64,7 +75,7 @@ const Navbar = () => {
 	return (
 		<Styles.Header>
 			<Styles.NavbarWrapper>
-				<Styles.LogoButton onClick={handleSwipeUp}>
+				<Styles.LogoButton onClick={handleClickLogo}>
 					<Logo />
 				</Styles.LogoButton>
 				<Styles.ButtonsContainer>

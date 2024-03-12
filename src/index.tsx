@@ -3,11 +3,10 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Home from './pages/components/Home/Home';
-import Navbar from './components/Navbar/Navbar';
-import Footer from './components/Footer/Footer';
+import Home from './pages/Home/Home';
 import { SnackbarProvider } from './providers/SnackbarProvider/SnackbarProvider';
 import { LocaleProvider } from './providers/LocaleProvider/LocaleProvider';
+import { ProjectsHandler } from './pages/ProjectsHandler';
 
 const router = createBrowserRouter([
 	{
@@ -17,6 +16,10 @@ const router = createBrowserRouter([
 			{
 				path: '/',
 				element: <Home />
+			},
+			{
+				path: '/projects',
+				element: <ProjectsHandler />
 			}
 		],
 	}
@@ -26,9 +29,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 	<React.StrictMode>
 		<LocaleProvider>
 			<SnackbarProvider>
-				<Navbar />
 				<RouterProvider router={router} />
-				<Footer />
 			</SnackbarProvider>
 		</LocaleProvider>
 	</React.StrictMode>

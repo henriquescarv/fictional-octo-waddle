@@ -10,8 +10,8 @@ const projects = [
 		imageSrc: marveldexPreview,
 		imageAlt: 'marveldex screen preview',
 		description: {
-			br: 'Aplicação que consome uma poderosa API da Marvel. Exibe listas de personagens, quadrinhos e autores. ReactJS, Typescript, Styled Components e Redux.',
-			en: 'App consuming a powerful Marvel API. Displays lists of characters, comics, and authors, as well as details for each item. ReactJS, Typescript, Styled Components and Redux.',
+			br: 'Aplicação que consome uma poderosa API da Marvel. Exibe listas de personagens, quadrinhos e autores. ReactJS, TypeScript, Styled Components e Redux.',
+			en: 'App consuming a powerful Marvel API. Displays lists of characters, comics, and authors, as well as details for each item. ReactJS, TypeScript, Styled Components and Redux.',
 		},
 		projectUrl: 'https://github.com/henriquescarv/marveldex',
 		deployUrl: 'https://marveldex.vercel.app/',
@@ -21,8 +21,8 @@ const projects = [
 		imageSrc: myPortfolioPreview,
 		imageAlt: 'my portfolio screen preview',
 		description: {
-			br: 'Este portfólio que você está vendo. Engloba meus projetos mais relevantes e informações sobre minha carreira até aqui. Construído com ReactJS, Typescript e Styled Components.',
-			en: 'This portfolio you are viewing. Presents my most relevant projects and information about my career so far. Built with ReactJS, Typescript, and Styled Components.',
+			br: 'Este portfólio que você está vendo. Engloba meus projetos mais relevantes e informações sobre minha carreira até aqui. Construído com ReactJS, TypeScript e Styled Components.',
+			en: 'This portfolio you are viewing. Presents my most relevant projects and information about my career so far. Built with ReactJS, TypeScript, and Styled Components.',
 		},
 		projectUrl: 'https://github.com/henriquescarv/my-portfolio',
 		deployUrl: '',
@@ -38,17 +38,6 @@ const projects = [
 		projectUrl: 'https://github.com/henriquescarv/old-portfolio',
 		deployUrl: 'https://henriqueoldportfolio.vercel.app/',
 	},
-	// {
-	// 	title: '#the-movie3',
-	// 	imageSrc: 'https://5287aa00874a313e299d-1850966fc307ff23e1e789aeafd2476b.ssl.cf5.rackcdn.com/PostImagem/27303/melhores-sites-de-banco-de-imagens-e-fotos-graacutetis_o1ddj6lbdksgdtkgt7n1pt5rqde.png',
-	// 	imageAlt: 'screen',
-	// 	description: {
-	// 		br: '',
-	// 		en: '',
-	// 	},
-	// 	projectUrl: '',
-	// 	deployUrl: '',
-	// },
 ];
 
 export default projects;

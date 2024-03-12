@@ -2,14 +2,14 @@ import React, { useContext, useState, useRef } from 'react';
 import Section from '../components/Section/Section';
 // import { ButtonProps } from '../../../../components/ui/Button/Button.types';
 // import HorizontalArrow from '../../../../icons/HorizontalArrow/HorizontalArrow';
-import skills from '../../../../data/skils';
-import Accordion from '../../../../components/ui/Accordion/Accordion';
-import Card from '../../../../components/ui/Card/Card';
-import DownloadIcon from '../../../../icons/DownloadIcon/DownloadIcon';
-import defaultTheme from '../../../../assets/styles/deafultTheme';
-import Button from '../../../../components/ui/Button/Button';
+import skills from '../../../data/skils';
+import Accordion from '../../../components/ui/Accordion/Accordion';
+import Card from '../../../components/ui/Card/Card';
+import DownloadIcon from '../../../icons/DownloadIcon/DownloadIcon';
+import defaultTheme from '../../../assets/styles/deafultTheme';
+import Button from '../../../components/ui/Button/Button';
 import * as Styles from './AboutSection.styles';
-import { LocaleContext } from '../../../../providers/LocaleProvider/LocaleProvider';
+import { LocaleContext } from '../../../providers/LocaleProvider/LocaleProvider';
 
 // all those comments will be 'uncomment' when the about-me page is built
 

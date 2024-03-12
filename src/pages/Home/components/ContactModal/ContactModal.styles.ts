@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import defaultTheme from '../../../../../assets/styles/deafultTheme';
+import defaultTheme from '../../../../assets/styles/deafultTheme';
 
 export const Form = styled.form`
   display: flex;

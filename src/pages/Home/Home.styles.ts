@@ -1,5 +1,5 @@
 import styled, { css, keyframes } from 'styled-components';
-import defaultTheme from '../../../assets/styles/deafultTheme';
+import defaultTheme from '../../assets/styles/deafultTheme';
 
 export const Wrapper = styled.div``;
 

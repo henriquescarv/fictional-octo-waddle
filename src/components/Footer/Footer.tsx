@@ -27,8 +27,8 @@ const Footer = () => {
 	};
 
 	return (
-		<Styles.FooterContainer>
-			<Styles.Footer>
+		<Styles.Footer>
+			<Styles.FooterContainer>
 				<Styles.TopContainer>
 					<Styles.LeftContainer>
 						<Styles.LogoButton onClick={handleSwipeUp}>
@@ -47,8 +47,8 @@ const Footer = () => {
 				<Styles.CopyrightContainer>
 					{locale.footer.copyright}
 				</Styles.CopyrightContainer>
-			</Styles.Footer>
-		</Styles.FooterContainer>
+			</Styles.FooterContainer>
+		</Styles.Footer>
 	);
 };
 

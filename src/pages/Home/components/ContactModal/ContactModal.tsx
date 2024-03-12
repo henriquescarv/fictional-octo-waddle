@@ -1,13 +1,13 @@
 import React, { useCallback, useContext, useState } from 'react';
-import Modal from '../../../../../components/ui/Modal/Modal';
+import Modal from '../../../../components/ui/Modal/Modal';
 import { ContactModalProps } from './ContactModal.types';
-import Input from '../../../../../components/ui/Input/Input';
+import Input from '../../../../components/ui/Input/Input';
 import * as Styles from './ContactModal.styles';
-import Button from '../../../../../components/ui/Button/Button';
-import useValidator from '../../../../../hooks/useValidator/useValidator';
-import Tooltip from '../../../../../components/ui/Tooltip/Tooltip';
-import useSendContact from '../../../../../hooks/useSendContact/useSendContact';
-import { LocaleContext } from '../../../../../providers/LocaleProvider/LocaleProvider';
+import Button from '../../../../components/ui/Button/Button';
+import useValidator from '../../../../hooks/useValidator/useValidator';
+import Tooltip from '../../../../components/ui/Tooltip/Tooltip';
+import useSendContact from '../../../../hooks/useSendContact/useSendContact';
+import { LocaleContext } from '../../../../providers/LocaleProvider/LocaleProvider';
 
 const errorsDefault = {
 	nameInput: '',

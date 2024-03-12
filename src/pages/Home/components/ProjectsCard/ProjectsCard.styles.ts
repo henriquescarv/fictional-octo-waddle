@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import defaultTheme from '../../../../../assets/styles/deafultTheme';
+import defaultTheme from '../../../../assets/styles/deafultTheme';
 
 export const CardImage = styled.img`
   border-radius: 16px 16px 0 0;

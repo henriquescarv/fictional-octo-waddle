@@ -1,4 +1,5 @@
 export type HorizontalArrowProps = {
   size?: 'sm' | 'md' | 'lg',
-  color?: string;
+  direction?: 'toRight' | 'toLeft' | 'toBottom' | 'toTop',
+  color?: string,
 };

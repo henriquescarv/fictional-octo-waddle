@@ -1,8 +1,8 @@
 import React from 'react';
 import * as Styles from './ProjectsCard.styles';
-import Button from '../../../../../components/ui/Button/Button';
+import Button from '../../../../components/ui/Button/Button';
 import { ProjectsCardProps } from './ProjectsCard.types';
-import Card from '../../../../../components/ui/Card/Card';
+import Card from '../../../../components/ui/Card/Card';
 
 const ProjectsCard = ({
 	title,

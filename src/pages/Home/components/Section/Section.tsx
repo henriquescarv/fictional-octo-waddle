@@ -1,7 +1,7 @@
 import React from 'react';
 import { SectionProps } from './Section.types';
 import * as Styles from './Section.styles';
-import Button from '../../../../../components/ui/Button/Button';
+import Button from '../../../../components/ui/Button/Button';
 
 const Section = ({ title, content, rightButton, sectionId }: SectionProps) => {
 	return (

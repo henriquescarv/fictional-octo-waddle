@@ -1,16 +1,16 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import * as Styles from './Home.styles';
-import Button from '../../../components/ui/Button/Button';
-import Dots from '../../../elements/Dots/Dots';
-import { ButtonProps, ButtonVariants } from '../../../components/ui/Button/Button.types';
-import GithubIcon from '../../../icons/GithubIcon/GithubIcon';
-import ScrollUpIcon from '../../../icons/ScrollUpIcon/ScrollUpIcon';
+import Button from '../../components/ui/Button/Button';
+import Dots from '../../elements/Dots/Dots';
+import { ButtonProps, ButtonVariants } from '../../components/ui/Button/Button.types';
+import GithubIcon from '../../icons/GithubIcon/GithubIcon';
+import ScrollUpIcon from '../../icons/ScrollUpIcon/ScrollUpIcon';
 import ContactModal from './components/ContactModal/ContactModal';
 import { ReactTypical } from '@deadcoder0904/react-typical';
 import ProjectsSection from './ProjectsSection/ProjectsSection';
 import ContactSection from './ContactSection/ContactSection';
 import AboutSection from './AboutSection/AboutSection';
-import { LocaleContext } from '../../../providers/LocaleProvider/LocaleProvider';
+import { LocaleContext } from '../../providers/LocaleProvider/LocaleProvider';
 
 const Home = () => {
 	const [swipeUpVisible, setSwipeUpVisible] = useState(false);

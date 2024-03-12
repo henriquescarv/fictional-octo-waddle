@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import defaultTheme from '../../assets/styles/deafultTheme';
 
-export const FooterContainer = styled.div`
+export const Footer = styled.footer`
   border-top: 1px solid ${defaultTheme.colors.gray};
 `;
 
-export const Footer = styled.footer`
+export const FooterContainer = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
